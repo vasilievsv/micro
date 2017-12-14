@@ -1,27 +1,43 @@
 #include "main.h"
 
-#include "intercom/header.h"
-#include "hostapi/core.h"
+#include "hostx/facade.h"
+#include "hostx.api/_core.h"
 
 void SystemClock_Config(void);
-void delay(int val)
-{
-    for(int i=0; i<val;i++){}
-}
 
 int main(void)
 {
     SystemClock_Config();
     
-    host_Bind(MEMREAD , hostapi_MCU_MEMREAD ,1 );
-    host_Bind(MEMWRITE, hostapi_MCU_MEMWRITE,1 );
+    //HOSTX_ProcBind(MEMREAD          , hostapi_MCU_MEMREAD   , 1);
+    //HOSTX_ProcBind(MEMWRITE         , hostapi_MCU_MEMWRITE  , 1);
+    
+    //HOSTX_ProcBind(PROTO_ECHO       , &hostapi_PROTO_ECHO   , 1);
+    //HOSTX_ProcBind(PROTO_MODE       , &hostapi_PROTO_MODE   , 1);
+    //HOSTX_ProcBind(PROTO_CONNECT    , &hostapi_PROTO_CONNECT, 1);
+
+    //HOSTX_ProcBind(CG_INIT          , &hostapi_CG_INIT      , 1);
+    //HOSTX_ProcBind(CG_INFO          , &hostapi_CG_INFO      , 1);
+    //HOSTX_ProcBind(CG_BITBLT        , &hostapi_CG_BITBLT    , 1);
+    //HOSTX_ProcBind(CG_CLEAR         , &hostapi_CG_CLEAR     , 1);
+    //HOSTX_ProcBind(CG_FONT          , &hostapi_CG_FONT      , 1);
+
+    //HOSTX_ProcBind(VM_PAUSE         , &sys_pause            , 13600);
+    //HOSTX_ProcBind(VM_RESTART       , &sys_restart          , 1);
+    //HOSTX_ProcBind(VM_TERMINATE     , &sys_terminate        , 1);
     
     INTERCOM_Setup();
-    
+
     loop:while (1)
     {
-        delay(1500*2048);
+        //_counter = RTC_GetCounter();
+        if (!vm_check_end_programm())
+        {
+            if (vm_check_end_opcode()) vm_next_opcode();
 
+            vm_execute();
+        }
+        //_counter = RTC_GetCounter() - _counter;
     }
 }
 
