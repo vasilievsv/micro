@@ -12,8 +12,7 @@
 #ifndef __HOSTX_API_CORE
 #define __HOSTX_API_CORE
 
-    #include "stdint.h"
-
+    #include "../hostx/facade.h"
 
     #define __RESERVED      0x00
     #define __PROTO         0xA0
@@ -56,8 +55,8 @@
     #define MEMWRITE         __USER+0x02
     #define USER_3           __USER+0x03
 
-    //extern int hostapi_MCU_MEMREAD (HOSTX_PACK*);
-    //extern int hostapi_MCU_MEMWRITE(HOSTX_PACK*);
+    extern int hostapi_MCU_MEMREAD (HOSTX_VM_CMD*);
+    extern int hostapi_MCU_MEMWRITE(HOSTX_VM_CMD*);
 
     extern int  hostapi_PROTO_MODE    (char*);
     extern int  hostapi_PROTO_CONNECT (char*);

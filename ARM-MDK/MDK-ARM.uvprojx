@@ -523,11 +523,6 @@
           <GroupName>User/hostx</GroupName>
           <Files>
             <File>
-              <FileName>structs.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\hostx\structs.h</FilePath>
-            </File>
-            <File>
               <FileName>facade.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\src\hostx\facade.h</FilePath>
@@ -551,6 +546,11 @@
               <FileName>hostx_Proc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\hostx\hostx_Proc.c</FilePath>
+            </File>
+            <File>
+              <FileName>_struct.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\hostx\_struct.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,3 +1,4 @@
 /MDK-ARM/STM32VL-Discovery/*.crf
 /MDK-ARM/STM32VL-Discovery/*.d
 /MDK-ARM/STM32VL-Discovery/*.o
+/ARM-MDK/STM32VL-Discovery

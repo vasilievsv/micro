@@ -16,8 +16,8 @@
 ////////
     HOSTX_CMD_FUNC*  vm_tableFunction[255];
     HOSTX_CMD_FUNC*  r_o_0;  // @object{ ep,func,tick }
-    CMD_PtrFunc            r_f_0;  // @ep - enter point
-    void*                  t_0;    // временный
+    API_PtrFunc      r_f_0;  // @ep - enter point
+    void*            t_0;    // временный
 
     int r_0 = 0;    // Текущий индекс комманды
     int r_1 = 0;    // Счетчик выполнения комманд
@@ -81,8 +81,8 @@
         vm_next_opcode();
     }
     
-    void sys_pause	 (){ }
-    void sys_stop	 (){ }
+    void sys_pause  (){ }
+    void sys_stop   (){ }
 
     ///
     ///
@@ -168,10 +168,6 @@
     {
         return (r_0 >= r_3)? 1 : 0 ;
     }
-
-    
-    
-    
     
 /// 
 /// 
@@ -185,7 +181,7 @@ void HOSTX_ProcWipe()
 /// 
 /// 
 /// 
-void HOSTX_ProcBind(uint8_t cmd, CMD_PtrFunc ptr, uint32_t time)
+void HOSTX_CMD(uint8_t cmd, API_PtrFunc ptr, uint32_t time)
 {
     // Создаем структуры и сохраняем указатель в таблице    
     // TODO: освобождение памяти free(ptr);
@@ -194,33 +190,50 @@ void HOSTX_ProcBind(uint8_t cmd, CMD_PtrFunc ptr, uint32_t time)
     vm_tableFunction[cmd]->tick = time;
 }
 
-///
-/// Парсер
-///
-void HOSTX_ProcRun(uint8_t* _ptr)
+
+inline void HOSTX_VM_Update()
 {
-    uint8_t _cursor = 0;
-    uint8_t _opcode = 0;
-
-    while (_cursor < 32 - 4)
+    if (!vm_check_end_programm())
     {
-        _opcode = *(_ptr + _cursor);
-
-        _cursor = _cursor + HOSTX_ProcCall( _opcode, _ptr );
+        if (vm_check_end_opcode()) vm_next_opcode();
+        
+        vm_execute();
     }
+}
 
+
+///
+/// 
+///
+void HOSTX_ProcRun(uint8_t* _ptr,uint16_t _size)
+{
+    uint8_t         _cursor = 0;
+    HOSTX_VM_CMD*   vm_cmd;
+    
+    uint8_t _flag = 0;
+    
+    while (_cursor < _size)
+    {
+        vm_cmd = (HOSTX_VM_CMD*)(_ptr + _cursor);
+        
+        _flag = HOSTX_ProcCall( vm_cmd->code, vm_cmd );
+        
+        _cursor += (_flag == 1)?vm_cmd->size+2:1;
+    }
 }
 
 ///
 ///
 ///
-int HOSTX_ProcCall(uint8_t cmd, uint8_t* ptr_frame) // ...arg
+int HOSTX_ProcCall(uint8_t cmd, void* ptr_frame) // ...arg
 {
     if (cmd <= 255 && vm_tableFunction[cmd] != 0 && vm_tableFunction[cmd]->func != 0)
     {
-        return vm_tableFunction[cmd]->func(ptr_frame);
+        vm_tableFunction[cmd]->func(ptr_frame);
+        
+        return 1;
     }
 
-    return 1; // hack for frame32 cursor
+    return 0; // hack for frame32 cursor
 }
     

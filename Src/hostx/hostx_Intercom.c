@@ -36,23 +36,35 @@
     HOSTX_PACK* rx = (HOSTX_PACK*)&device_bufferRx;
     
 /////////////////////////
-// DEVICE METHODs
+// DEVICE FUNCTIONS
 /////////////////////////
+
     /** 
-      * @brief 
+      * @brief INTERCOM_Write
     */
-    void INTERCOM_Send(void *_myData, uint16_t _mySize)
+    void INTERCOM_Flush()
     {
-        tx->pack_crc    = hxCRC32( _myData, _mySize);
-        tx->pack_size   = _mySize + __SIZE_FRAME-2; 
-        tx->origin      = NULL;
-        
-        memcpy( &tx->origin, _myData, _mySize);
+        tx->pack_crc    = hxCRC32( &tx->origin, tx->pack_size);
+        tx->pack_cfg    = 0xFF;
+        tx->pack_size  += __SIZE_FRAME-1;
         
         LL_DMA_SetDataLength (_xdma, _xdma_chTX, tx->pack_size );
         LL_DMA_EnableChannel (_xdma, _xdma_chTX);
     }
+    /** 
+      * @brief INTERCOM_Write
+    */
     
+    void INTERCOM_Write(void *_myData, uint16_t _mySize)
+    {
+        memcpy( &tx->origin + tx->pack_size, _myData, _mySize);
+        tx->pack_size += _mySize;
+    }
+    
+    /** @brief INTERCOM_Setup
+      *
+      * 
+      */
     void INTERCOM_Setup()
     {
 // GPIO

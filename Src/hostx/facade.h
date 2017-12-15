@@ -12,17 +12,15 @@
     #include "stm32f1xx_ll_dma.h"
     
     
-    #include "structs.h"
-    
+    #include "_struct.h"
 
-
-extern uint32_t hxCRC32(uint8_t *Buf, uint32_t Len);
+    extern uint32_t hxCRC32(uint8_t *Buf, uint32_t Len);
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-    extern void INTERCOM_Send(void *,uint16_t);
+    extern void INTERCOM_Write(void *,uint16_t);
     extern void INTERCOM_Setup();
      
     extern uint8_t  device_bufferTx[];
@@ -47,12 +45,13 @@ extern uint32_t hxCRC32(uint8_t *Buf, uint32_t Len);
     extern unsigned char   vm_stream_1 [32];
     extern unsigned char   vm_stream_2 [32];
     
-    extern void HOSTX_ProcBind  ( uint8_t, CMD_PtrFunc, uint32_t );
+    extern inline void HOSTX_VM_Update();
+    extern void HOSTX_CMD  ( uint8_t, API_PtrFunc, uint32_t );
     extern void HOSTX_ProcClear ();
-    extern int  HOSTX_ProcCall  ( uint8_t ,uint8_t*);
-    extern void HOSTX_ProcRun   ( uint8_t* );
+    extern void HOSTX_ProcRun   ( uint8_t* ,uint16_t);
     
 
+    extern int  HOSTX_ProcCall  ( uint8_t ,void*);
     extern int  vm_check_end_programm();
     extern int  vm_check_end_opcode();
     
