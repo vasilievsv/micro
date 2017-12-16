@@ -5,23 +5,36 @@
 
 void SystemClock_Config(void);
 
+
+uint8_t foo[] = {0xAA,0xBB,0xCC,0xFF,0xFF,0xFF,0xFF,0xFF};
+
+void _echo()
+{
+    INTERCOM_Write(&"test",7);
+    INTERCOM_Flush();
+}
+
+
 int main(void)
 {
+    uint32_t T = (uint32_t)&foo;
     SystemClock_Config();
     
     HOSTX_CMD( MEMREAD          , hostapi_MCU_MEMREAD   , 1);
     HOSTX_CMD( MEMWRITE         , hostapi_MCU_MEMWRITE  , 1);
     
-    HOSTX_CMD( VM_PAUSE         , &sys_pause            , 13600);
+    HOSTX_CMD(__USER+3, _echo,1);
+    HOSTX_CMD( VM_PAUSE         , &sys_pause            , 150600);
     HOSTX_CMD( VM_RESTART       , &sys_restart          , 1);
     HOSTX_CMD( VM_TERMINATE     , &sys_terminate        , 1);
     
     INTERCOM_Setup();
     
+    //vm_set_stream((char[]){__USER+3,VM_PAUSE,VM_RESTART,0});
+
     loop:while (1)
     {
         HOSTX_VM_Update();
-        hxSleep(500);
     }
 }
 

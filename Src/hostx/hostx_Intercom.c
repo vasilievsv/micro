@@ -46,7 +46,7 @@
     {
         tx->pack_crc    = hxCRC32( &tx->origin, tx->pack_size);
         tx->pack_cfg    = 0xFF;
-        tx->pack_size  += __SIZE_FRAME-1;
+        tx->pack_size   += sizeof(HOSTX_PACK)-1; // size of frame
         
         LL_DMA_SetDataLength (_xdma, _xdma_chTX, tx->pack_size );
         LL_DMA_EnableChannel (_xdma, _xdma_chTX);
