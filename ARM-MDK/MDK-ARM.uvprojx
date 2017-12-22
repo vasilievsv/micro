@@ -573,11 +573,6 @@
               <FilePath>..\src\hostx.api\api_PROTO.c</FilePath>
             </File>
             <File>
-              <FileName>api_VM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\hostx.api\api_VM.c</FilePath>
-            </File>
-            <File>
               <FileName>_core.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\src\hostx.api\_core.h</FilePath>
