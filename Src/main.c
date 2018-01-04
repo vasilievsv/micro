@@ -4,6 +4,7 @@
 #include "hostx/vm.h"
 
 extern COOK_RECEIPT  RECEIPT_SimpleComPort;
+extern COOK_RECEIPT  RECEIPT_SimpleRadioPort;
 extern COOK_RECEIPT  RECEIPT_CRC32;
 extern COOK_RECEIPT  RECEIPT_Dummy;
 

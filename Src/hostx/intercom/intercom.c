@@ -28,7 +28,7 @@
     ///
     IO_CHANNEL* INTERCOM_CreateChannel(uint8_t index, COOK_RECEIPT* _receipt)
     {
-        _channels[index]            = (IO_CHANNEL*)malloc(sizeof(IO_CHANNEL));
+        _channels[index]         = (IO_CHANNEL*)malloc(sizeof(IO_CHANNEL));
         
         _channels[index]->flag   = 0xFF;
         _channels[index]->raw_IN = (uint8_t*)malloc(32*sizeof(uint8_t));
@@ -37,7 +37,7 @@
         _channels[index]->Handler_RX= &IO_CHANNEL_StreamIn;
         _channels[index]->Handler_TX= &IO_CHANNEL_StreamOut;
         
-        //TODO: Используем Абстракция для инициализации перефирии
+        //TODO: Абстракция для инициализации перефирии
         COOK_HW( _receipt );
         
         return _channels[index];
