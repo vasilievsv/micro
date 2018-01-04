@@ -5,7 +5,7 @@
     
     typedef void (*COOK_FUNCTION)(void*);
     
-    typedef struct XRESOURCE_BASE
+    typedef struct XRESOURCE
     {
         COOK_FUNCTION   cook;
         

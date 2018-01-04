@@ -3,7 +3,7 @@
 #include "hostx/intercom.h"
 #include "hostx/vm.h"
 
-extern COOK_RECEIPT RECEIPT_MyUSART_Simple;
+extern COOK_RECEIPT  RECEIPT_MyUSART_Simple;
 
 int main(void)
 {

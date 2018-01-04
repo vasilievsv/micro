@@ -22,7 +22,7 @@
     typedef struct STRUCT_IO_CHANNEL
     {
         uint8_t  cfg;
-        //XRESOURCE_BASE* cook;
+        //XRESOURCE* cook;
         IO_CALLBACK Handler_TX;
         IO_CALLBACK Handler_RX;
         
