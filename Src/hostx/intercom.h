@@ -1,6 +1,8 @@
 #ifndef __HOSTX_INTERCOM
 #define __HOSTX_INTERCOM
     
+    
+    
     #include "facade.h"
     #include "cookbook.h"
     
@@ -15,13 +17,24 @@
         uint8_t  origin;
     }IO_STREAM;
     
+    #pragma anon_unions
     typedef struct 
     {
-        uint8_t  flag;
-        uint8_t* stream_IN;
-        uint8_t* stream_OUT;
+        uint8_t         flag;
         
-        COOK_RECEIPT*   hw_init_rules;
+        union
+        {
+            uint8_t*        raw_IN;
+            IO_STREAM*      stream_IN;
+        };
+        
+        union
+        {
+            uint8_t*        raw_OUT;
+            IO_STREAM*      stream_OUT;
+        };
+        
+        COOK_RECEIPT*   hw;
         
         IO_CALLBACK     Handler_TX;
         IO_CALLBACK     Handler_RX;

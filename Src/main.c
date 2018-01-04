@@ -27,14 +27,12 @@ int main(void)
 void DMA1_Channel4_IRQHandler(void)
 { 
     IO_CHANNEL* T = INTERCOM_GetChannel(0);
-    
     T->Handler_RX( T ); 
 }
 
 void DMA1_Channel5_IRQHandler(void)
 { 
     IO_CHANNEL* T = INTERCOM_GetChannel(0);
-    
     T->Handler_TX( T ); 
 }
 

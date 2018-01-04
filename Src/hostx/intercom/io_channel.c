@@ -1,32 +1,37 @@
-#include "../intercom.h"
+    #include "../intercom.h"
 
-
-void IO_CHANNEL_StreamOut(IO_CHANNEL* channel)
-{
-    /*
-    if(_xdma->ISR & DMA_ISR_TCIF4) //.Если обмен завершен
+    ///
+    ///
+    ///
+    void IO_CHANNEL_StreamOut(IO_CHANNEL* io)
     {
-        LL_DMA_DisableChannel(_xdma, _xdma_chTX);
-        LL_DMA_ClearFlag_TC4 (_xdma);
         
-        //WRITE_REG(DMAx->IFCR, DMA_IFCR_CTCIF4);
+        if(io->hw->use_dma->ISR & DMA_ISR_TCIF4) 
+        {
+            LL_DMA_DisableChannel(io->hw->use_dma, io->hw->dma_chTX);
+            LL_DMA_ClearFlag_TC4 (io->hw->use_dma);
+            
+            memset(&io->stream_OUT,0,32);
+        }//.Если обмен завершен
         
-        memset(&device_bufferTx,0,32);
+        if(io->hw->use_dma->ISR & DMA_ISR_HTIF4) 
+        {
+            LL_DMA_ClearFlag_HT4 (io->hw->use_dma);
+        }//.Если передана половина буфера
+        
+        
+        if(io->hw->use_dma->ISR & DMA_ISR_TEIF4) 
+        {
+            
+        }//.Если произошла ошибка при обмене 
+        
     }
-    if(_xdma->ISR & DMA_ISR_HTIF4) //.Если передана половина буфера
+    ///
+    ///
+    ///
+    void IO_CHANNEL_StreamIn(IO_CHANNEL* io)
     {
-        LL_DMA_ClearFlag_HT4 (_xdma);
-    }
-    if(_xdma->ISR & DMA_ISR_TEIF4) { } //.Если произошла ошибка при обмене
-    */
-}
-
-void IO_CHANNEL_StreamIn(IO_CHANNEL* channel)
-{
-    /*
-    if(_xdma->ISR & DMA_ISR_TCIF5) // Если обмен завершен
-    {
-        if(device_use_CRC == 1)
+        if(io->hw->use_dma->ISR & DMA_ISR_TCIF5) // Если обмен завершен
         {
             //HOSTX_PACK *_pack = (HOSTX_PACK*)&device_bufferRx;
             
@@ -41,12 +46,18 @@ void IO_CHANNEL_StreamIn(IO_CHANNEL* channel)
             //HOSTX_ProcRun(ptr_data, header_size);
             //INTERCOM_Flush();
             //}
+            
+            LL_DMA_ClearFlag_TC5 (io->hw->use_dma);
         }
         
-        LL_DMA_ClearFlag_TC5 (_xdma);
+        if(io->hw->use_dma->ISR & DMA_ISR_HTIF5) 
+        {
+            
+        }// Если передана половина буфера
+        
+        if(io->hw->use_dma->ISR & DMA_ISR_TEIF5) 
+        {
+            
+        }// Если произошла ошибка при обмене
+        
     }
-    
-    if(_xdma->ISR & DMA_ISR_HTIF5) { }// Если передана половина буфера
-    if(_xdma->ISR & DMA_ISR_TEIF5) { }// Если произошла ошибка при обмене
-    */
-}
