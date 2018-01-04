@@ -1,3 +1,13 @@
+/**
+  ******************************************************************************
+  * @file    
+  * @author  
+  * @version 
+  * @date     4 jan 2018 
+  * @brief   
+  ******************************************************************************
+*/
+
 #include "hostx/cookbook.h"
 
 void COOK_LL_SimpleUSART(COOK_RECEIPT* xres)
@@ -88,7 +98,7 @@ void COOK_LL_SimpleUSART(COOK_RECEIPT* xres)
 }
 
 
-COOK_RECEIPT RECEIPT_ComPort =
+COOK_RECEIPT RECEIPT_SimpleComPort =
 {
      .cook       = &COOK_LL_SimpleUSART
     

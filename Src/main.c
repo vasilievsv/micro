@@ -3,8 +3,9 @@
 #include "hostx/intercom.h"
 #include "hostx/vm.h"
 
-extern COOK_RECEIPT  RECEIPT_ComPort;
+extern COOK_RECEIPT  RECEIPT_SimpleComPort;
 extern COOK_RECEIPT  RECEIPT_CRC32;
+extern COOK_RECEIPT  RECEIPT_Dummy;
 
 int main(void)
 {
@@ -14,7 +15,7 @@ int main(void)
     //VM_HostCommand( VM_RESTART       , &sys_restart          , 1);
     //VM_HostCommand( VM_TERMINATE     , &sys_terminate        , 1);
     
-    INTERCOM_CreateChannel( 0, &RECEIPT_ComPort );
+    INTERCOM_CreateChannel( 0, &RECEIPT_SimpleComPort );
     //INTERCOM_CreateChannel( RECEIPT_Dummy    ,32 ,32 );
     //INTERCOM_CreateChannel( RECEIPT_Dummy    ,32 ,32 );
     
