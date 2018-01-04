@@ -8,16 +8,16 @@
   ******************************************************************************
 */
 
-#include "facade.h"
+#include "../vm.h"
 
 
 ////////
 // VM регистры
 ////////
-    HOSTX_CMD_FUNC*  vm_tableFunction[255];
-    HOSTX_CMD_FUNC*  r_o_0;  // @object{ ep,func,tick }
-    API_PtrFunc      r_f_0;  // @ep - enter point
-    void*            t_0;    // временный
+    VM_API*         vm_tableAPI[255];
+    VM_API*         r_o_0;  // @object{ ep,func,tick }
+    API_NativeFunc  r_f_0;  // @ep - enter point
+    void*           t_0;    // временный
 
     int r_0 = 0;    // Текущий индекс комманды
     int r_1 = 0;    // Счетчик выполнения комманд
@@ -38,7 +38,7 @@
     ///
     ///
     ///
-    void vm_set_stream(char *ptr_frame)
+    void VM_set_stream(char *ptr_frame)
     {
         //_frame32_cursor = 0;
          memset(&vm_stream_0,0,31);
@@ -78,7 +78,7 @@
         r_0 = -1;
         r_1 = 0;
 
-        vm_next_opcode();
+        VM_next_opcode();
     }
     
     void sys_pause  (){ }
@@ -87,17 +87,17 @@
     ///
     ///
     ///
-    void vm_next_opcode()
+    void VM_next_opcode()
     {
         r_0++; 	// индекс следующего опкода
         r_1=0;	// сбрасываем счетчик
 
-        vm_read_opcode();
+        VM_read_opcode();
     }
     ///
     ///
     ///
-    void vm_execute()
+    void VM_execute()
     {
         r_1++;
         if(r_f_0 != 0)
@@ -114,11 +114,11 @@
     ///
     ///
     ///
-    void vm_read_opcode()
+    void VM_read_opcode()
     {
         if(r_0 < r_3)
         {
-            r_o_0   = vm_tableFunction[ vm_stream_0[r_0] ];
+            r_o_0   = vm_tableAPI[ vm_stream_0[r_0] ];
 
             if(r_o_0 != 0)
             {
@@ -142,7 +142,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 /// Обработка завершение выполнения опкода
 ///////////////////////////////////////////////////////////////////////////////
-    int vm_check_end_opcode()
+    int VM_CHECK_end_opcode()
     {
         //если счетчик выполнения >= время выполнения
         if((r_1 >= r_2))
@@ -164,7 +164,7 @@
     /// Смещение(r_0) равно длинне программы(r_3).
     /// программа закончена
     ///
-    int vm_check_end_programm()
+    int VM_CHECK_end_programm()
     {
         return (r_0 >= r_3)? 1 : 0 ;
     }
@@ -175,29 +175,29 @@
 void HOSTX_ProcWipe()
 {
     for (register uint8_t i = 0; i != 255; i++)
-        vm_tableFunction[i] = 0;
+        vm_tableAPI[i] = 0;
 }
 
 /// 
 /// 
 /// 
-void HOSTX_CMD(uint8_t cmd, API_PtrFunc ptr, uint32_t time)
+void VM_HostCommand(uint8_t cmd, API_NativeFunc ptr, uint32_t time)
 {
     // Создаем структуры и сохраняем указатель в таблице    
     // TODO: освобождение памяти free(ptr);
-    vm_tableFunction[cmd] = (HOSTX_CMD_FUNC*)malloc(sizeof(HOSTX_CMD_FUNC));
-    vm_tableFunction[cmd]->func = ptr;
-    vm_tableFunction[cmd]->tick = time;
+    vm_tableAPI[cmd] = (VM_API*)malloc(sizeof(VM_API));
+    vm_tableAPI[cmd]->func = ptr;
+    vm_tableAPI[cmd]->tick = time;
 }
 
 
-inline void HOSTX_VM_Update()
+inline void VM_Update()
 {
-    if (!vm_check_end_programm())
+    if (!VM_CHECK_end_programm())
     {
-        if (vm_check_end_opcode()) vm_next_opcode();
+        if (VM_CHECK_end_opcode()) VM_next_opcode();
         
-        vm_execute();
+        VM_execute();
     }
 }
 
@@ -207,16 +207,16 @@ inline void HOSTX_VM_Update()
 ///
 void HOSTX_ProcRun(uint8_t* _ptr,uint16_t _size)
 {
-    uint8_t         _cursor = 0;
-    HOSTX_VM_CMD*   vm_cmd;
+    uint8_t      _cursor = 0;
+    VM_OPCODE*   vm_cmd;
     
     uint8_t _flag = 0;
     
     while (_cursor < _size)
     {
-        vm_cmd = (HOSTX_VM_CMD*)(_ptr + _cursor);
+        vm_cmd = (VM_OPCODE*)(_ptr + _cursor);
         
-        _flag = HOSTX_ProcCall( vm_cmd->code, vm_cmd );
+        _flag = VM_Call( vm_cmd->code, vm_cmd );
         
         _cursor += (_flag == 1)?vm_cmd->size+2:1;
     }
@@ -225,11 +225,11 @@ void HOSTX_ProcRun(uint8_t* _ptr,uint16_t _size)
 ///
 ///
 ///
-int HOSTX_ProcCall(uint8_t cmd, void* ptr_frame) // ...arg
+int VM_Call(uint8_t cmd, void* ptr_frame) // ...arg
 {
-    if (cmd <= 255 && vm_tableFunction[cmd] != 0 && vm_tableFunction[cmd]->func != 0)
+    if (cmd <= 255 && vm_tableAPI[cmd] != 0 && vm_tableAPI[cmd]->func != 0)
     {
-        vm_tableFunction[cmd]->func(ptr_frame);
+        vm_tableAPI[cmd]->func(ptr_frame);
         
         return 1;
     }

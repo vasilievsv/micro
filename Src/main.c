@@ -9,11 +9,9 @@ int main(void)
 {
     SystemClock_Config();
     
-    //VM_BindAPI( MEMREAD          , hostapi_MCU_MEMREAD   , 1);
-    //VM_BindAPI( MEMWRITE         , hostapi_MCU_MEMWRITE  , 1);
-    //VM_BindAPI( VM_PAUSE         , &sys_pause            , 150600);
-    //VM_BindAPI( VM_RESTART       , &sys_restart          , 1);
-    //VM_BindAPI( VM_TERMINATE     , &sys_terminate        , 1);
+    //VM_HostCommand( VM_PAUSE         , &sys_pause            , 150600);
+    //VM_HostCommand( VM_RESTART       , &sys_restart          , 1);
+    //VM_HostCommand( VM_TERMINATE     , &sys_terminate        , 1);
     
     //INTERCOM_CreateChannel( INIT_RECEIPT_UART1 );
     //INTERCOM_CreateChannel( INIT_RECEIPT_UART2 );

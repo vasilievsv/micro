@@ -575,6 +575,16 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>hostx/vm</GroupName>
+          <Files>
+            <File>
+              <FileName>VM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\hostx\vm\VM.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::CMSIS</GroupName>
         </Group>
       </Groups>
