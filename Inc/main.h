@@ -21,7 +21,7 @@
 #include "stm32f1xx_ll_usart.h"
 #include "stm32f1xx_ll_wwdg.h"
 
- void SystemClock_Config(void);
+void SystemClock_Config(void);
 
 #if defined(USE_FULL_ASSERT)
 #include "stm32_assert.h"

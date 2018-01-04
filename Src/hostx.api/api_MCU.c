@@ -15,7 +15,7 @@
     /// 
     /// 00-00 00-00-00-00 00-00
     ///  ^           ^     ^
-    int hostapi_MCU_MEMREAD(HOSTX_VM_CMD* _cmd)
+    int hostapi_MCU_MEMREAD(VM_OPCODE* _cmd)
     { 
         uint32_t    _memAddr= *((uint32_t*)&_cmd->origin);    // откуда 
         uint8_t     _memCnt = *((uint8_t*)&_cmd->origin+4); // сколько
@@ -32,7 +32,7 @@
     /// 
     /// 00-00 00-00-00-00 00-00
     ///  ^           ^     ^
-    int hostapi_MCU_MEMWRITE(HOSTX_VM_CMD *_cmd)
+    int hostapi_MCU_MEMWRITE(VM_OPCODE *_cmd)
     {
         uint32_t*       _addr = (uint32_t*)&_cmd->origin;
         uint8_t         _size = *((uint8_t*)&_cmd->origin+4);
