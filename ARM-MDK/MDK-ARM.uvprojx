@@ -517,6 +517,11 @@
               <FileType>1</FileType>
               <FilePath>..\src\COOK_LL_SimpleUSART.c</FilePath>
             </File>
+            <File>
+              <FileName>COOK_LL_CRC32.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\COOK_LL_CRC32.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

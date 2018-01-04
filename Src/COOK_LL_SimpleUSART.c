@@ -88,7 +88,7 @@ void COOK_LL_SimpleUSART(COOK_RECEIPT* xres)
 }
 
 
-COOK_RECEIPT RECEIPT_MyUSART_Simple =
+COOK_RECEIPT RECEIPT_ComPort =
 {
      .cook       = &COOK_LL_SimpleUSART
     

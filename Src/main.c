@@ -3,7 +3,8 @@
 #include "hostx/intercom.h"
 #include "hostx/vm.h"
 
-extern COOK_RECEIPT  RECEIPT_MyUSART_Simple;
+extern COOK_RECEIPT  RECEIPT_ComPort;
+extern COOK_RECEIPT  RECEIPT_CRC32;
 
 int main(void)
 {
@@ -13,26 +14,28 @@ int main(void)
     //VM_HostCommand( VM_RESTART       , &sys_restart          , 1);
     //VM_HostCommand( VM_TERMINATE     , &sys_terminate        , 1);
     
-    //INTERCOM_CreateChannel( INIT_RECEIPT_UART1 );
-    //INTERCOM_CreateChannel( INIT_RECEIPT_UART2 );
-    //INTERCOM_CreateChannel( INIT_RECEIPT_NRF   );
-    
-    COOK_By( &RECEIPT_MyUSART_Simple );
+    INTERCOM_CreateChannel( 0, &RECEIPT_ComPort );
+    //INTERCOM_CreateChannel( RECEIPT_Dummy    ,32 ,32 );
+    //INTERCOM_CreateChannel( RECEIPT_Dummy    ,32 ,32 );
     
     loop:while(1)
     {
-        //VM_Update();
+        VM_Update();
     }
 }
 
 void DMA1_Channel4_IRQHandler(void)
 { 
-    //INTERCOM_GetChannel(0)->Handler_RX(void); 
+    IO_CHANNEL* T = INTERCOM_GetChannel(0);
+    
+    T->Handler_RX( T ); 
 }
 
 void DMA1_Channel5_IRQHandler(void)
 { 
-    //INTERCOM_GetChannel(0)->Handler_TX(void); 
+    IO_CHANNEL* T = INTERCOM_GetChannel(0);
+    
+    T->Handler_TX( T ); 
 }
 
 /* ==============   BOARD SPECIFIC CONFIGURATION CODE BEGIN    ============== */

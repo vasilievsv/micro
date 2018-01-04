@@ -19,7 +19,7 @@
         __NOP();
     }
     
-    COOK_RECEIPT RECEIPT_SimpleCRC32 =
+    COOK_RECEIPT RECEIPT_CRC32 =
     {
          .cook       = &COOK_LL_SimpleCRC32
         

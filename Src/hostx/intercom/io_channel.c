@@ -1,11 +1,8 @@
 #include "../intercom.h"
 
 
-//
-// INTERCOM SEND MESSAGE
-//
-//void TIO_Channel_Handler_RX()
-//{
+void IO_CHANNEL_StreamOut(IO_CHANNEL* channel)
+{
     /*
     if(_xdma->ISR & DMA_ISR_TCIF4) //.Если обмен завершен
     {
@@ -22,12 +19,10 @@
     }
     if(_xdma->ISR & DMA_ISR_TEIF4) { } //.Если произошла ошибка при обмене
     */
-//}
-//
-// INTERCOM RECIEVE MESSAGE
-//
-//void TIO_Channel_Handler_RX(void)
-//{
+}
+
+void IO_CHANNEL_StreamIn(IO_CHANNEL* channel)
+{
     /*
     if(_xdma->ISR & DMA_ISR_TCIF5) // Если обмен завершен
     {
@@ -54,4 +49,4 @@
     if(_xdma->ISR & DMA_ISR_HTIF5) { }// Если передана половина буфера
     if(_xdma->ISR & DMA_ISR_TEIF5) { }// Если произошла ошибка при обмене
     */
-//}
+}

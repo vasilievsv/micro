@@ -21,7 +21,7 @@
         
     }COOK_RECEIPT;
         
-    extern void COOK_By(COOK_RECEIPT* xres);
+    extern void COOK_HW(COOK_RECEIPT* xres);
     
     
 #endif

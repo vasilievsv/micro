@@ -9,27 +9,38 @@
 */
     #include "../intercom.h"
     
-    const uint16_t __SIZE_FRAME = sizeof(IO_STREAM);
+    //TODO: Сильная связанность с IO_CHANNEL
+    extern void IO_CHANNEL_StreamIn (IO_CHANNEL* channel);
+    extern void IO_CHANNEL_StreamOut(IO_CHANNEL* channel);
     
-///
-/// DEVICE HARDWARE
-///
-    //IO_CHANNEL *_channels[4];
-///
-/// DEVICE ATTRIBUTEs
-///
-    uint8_t  device_use_CRC         = 1;
+    IO_CHANNEL* _channels[4] = NULL;
+    uint8_t     _countChannel= 0;
     
-    uint8_t  device_bufferTx[__SIZE_FRAME+32*6];
-    uint8_t  device_bufferRx[__SIZE_FRAME+32*6];
-    
-    IO_STREAM* tx = (IO_STREAM*)&device_bufferTx;
-    IO_STREAM* rx = (IO_STREAM*)&device_bufferRx;
-    
-
-    /** 
-      *
-    */
+    IO_CHANNEL* INTERCOM_GetChannel(uint8_t index)
+    {
+        return _channels[index];
+    }
+    ///
+    ///
+    ///
+    IO_CHANNEL* INTERCOM_CreateChannel(uint8_t index, COOK_RECEIPT* _receipt)
+    {
+        _channels[index] = (IO_CHANNEL*)malloc(sizeof(IO_CHANNEL));
+        
+        _channels[index]->flag      = 0xFF;
+        _channels[index]->stream_IN = (uint8_t*)malloc(32*sizeof(uint8_t));
+        _channels[index]->stream_OUT= (uint8_t*)malloc(32*sizeof(uint8_t));
+        
+        _channels[index]->Handler_RX=&IO_CHANNEL_StreamIn;
+        _channels[index]->Handler_TX=&IO_CHANNEL_StreamIn;
+        
+        COOK_HW( _receipt );
+        
+        return _channels[index];
+    }
+    ///
+    ///
+    ///
     void INTERCOM_Flush()
     {
         /*
@@ -41,10 +52,9 @@
         LL_DMA_EnableChannel (_xdma, _xdma_chTX);
     */
     }
-    /** 
-      * 
-     */
-    
+    ///
+    ///
+    ///
     void INTERCOM_Write(void *_myData, uint16_t _mySize)
     {
         //memcpy( &tx->origin + tx->pack_size, _myData, _mySize);
