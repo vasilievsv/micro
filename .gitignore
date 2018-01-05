@@ -4,3 +4,4 @@
 /ARM-MDK/STM32VL-Discovery
 /*.DS_Store
 /ARM-GCC/*.DS_Store
+*.DS_Store

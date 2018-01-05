@@ -3,22 +3,30 @@
 #include "hostx/intercom.h"
 #include "hostx/vm.h"
 
+
+extern COOK_RECEIPT  RECEIPT_SimpleDWT;
 extern COOK_RECEIPT  RECEIPT_SimpleComPort;
 extern COOK_RECEIPT  RECEIPT_SimpleRadioPort;
 extern COOK_RECEIPT  RECEIPT_CRC32;
 extern COOK_RECEIPT  RECEIPT_Dummy;
 
+
 int main(void)
 {
     SystemClock_Config();
+    
+    COOK_HW(&RECEIPT_CRC32);
+    COOK_HW(&RECEIPT_SimpleDWT);
     
     VM_BindAPI( VM_PAUSE         , &sys_pause            , 150600);
     VM_BindAPI( VM_RESTART       , &sys_restart          , 1);
     VM_BindAPI( VM_TERMINATE     , &sys_terminate        , 1);
     
+    int a = DWT->CYCCNT;
     INTERCOM_OpenChannel( 0, &RECEIPT_SimpleComPort );
     INTERCOM_OpenChannel( 1, &RECEIPT_SimpleRadioPort );
     INTERCOM_OpenChannel( 2, &RECEIPT_Dummy );
+    int b = DWT->CYCCNT-a;
     
     loop:while(1)
     {
