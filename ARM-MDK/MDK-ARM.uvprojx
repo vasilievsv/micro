@@ -512,36 +512,11 @@
               <FileType>1</FileType>
               <FilePath>../Src/stm32f1xx_it.c</FilePath>
             </File>
-            <File>
-              <FileName>COOK_LL_CRC32.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\COOK_LL_CRC32.c</FilePath>
-            </File>
-            <File>
-              <FileName>COOK_LL_Dummy.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\COOK_LL_Dummy.c</FilePath>
-            </File>
-            <File>
-              <FileName>COOK_LL_SimpleComPort.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\COOK_LL_SimpleComPort.c</FilePath>
-            </File>
-            <File>
-              <FileName>COOK_LL_SimpleRadioPort.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\COOK_LL_SimpleRadioPort.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>hostx</GroupName>
           <Files>
-            <File>
-              <FileName>cookbook.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\hostx\cookbook.h</FilePath>
-            </File>
             <File>
               <FileName>intercom.h</FileName>
               <FileType>5</FileType>
@@ -556,6 +531,11 @@
               <FileName>facade.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\src\hostx\facade.h</FilePath>
+            </File>
+            <File>
+              <FileName>cooking.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\hostx\cooking.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -580,12 +560,12 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>hostx/cookbook</GroupName>
+          <GroupName>hostx/cooking</GroupName>
           <Files>
             <File>
-              <FileName>cookbook.c</FileName>
+              <FileName>cooking.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\src\hostx\cookbook\cookbook.c</FilePath>
+              <FilePath>..\src\hostx\cooking\cooking.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -601,6 +581,31 @@
               <FileName>_core.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\src\hostx\vm\_core.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>User/cookbook</GroupName>
+          <Files>
+            <File>
+              <FileName>COOK_LL_CRC32.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\cookbook\COOK_LL_CRC32.c</FilePath>
+            </File>
+            <File>
+              <FileName>COOK_LL_Dummy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\cookbook\COOK_LL_Dummy.c</FilePath>
+            </File>
+            <File>
+              <FileName>COOK_LL_SimpleComPort.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\cookbook\COOK_LL_SimpleComPort.c</FilePath>
+            </File>
+            <File>
+              <FileName>COOK_LL_SimpleRadioPort.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\cookbook\COOK_LL_SimpleRadioPort.c</FilePath>
             </File>
           </Files>
         </Group>

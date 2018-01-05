@@ -12,9 +12,9 @@ int main(void)
 {
     SystemClock_Config();
     
-    VM_HostAPI( VM_PAUSE         , &sys_pause            , 150600);
-    VM_HostAPI( VM_RESTART       , &sys_restart          , 1);
-    VM_HostAPI( VM_TERMINATE     , &sys_terminate        , 1);
+    VM_BindAPI( VM_PAUSE         , &sys_pause            , 150600);
+    VM_BindAPI( VM_RESTART       , &sys_restart          , 1);
+    VM_BindAPI( VM_TERMINATE     , &sys_terminate        , 1);
     
     INTERCOM_OpenChannel( 0, &RECEIPT_SimpleComPort );
     INTERCOM_OpenChannel( 1, &RECEIPT_SimpleRadioPort );
