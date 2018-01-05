@@ -513,14 +513,24 @@
               <FilePath>../Src/stm32f1xx_it.c</FilePath>
             </File>
             <File>
-              <FileName>COOK_LL_SimpleUSART.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\COOK_LL_SimpleUSART.c</FilePath>
-            </File>
-            <File>
               <FileName>COOK_LL_CRC32.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\COOK_LL_CRC32.c</FilePath>
+            </File>
+            <File>
+              <FileName>COOK_LL_Dummy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\COOK_LL_Dummy.c</FilePath>
+            </File>
+            <File>
+              <FileName>COOK_LL_SimpleComPort.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\COOK_LL_SimpleComPort.c</FilePath>
+            </File>
+            <File>
+              <FileName>COOK_LL_SimpleRadioPort.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\COOK_LL_SimpleRadioPort.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -586,6 +596,11 @@
               <FileName>VM.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\hostx\vm\VM.c</FilePath>
+            </File>
+            <File>
+              <FileName>_core.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\hostx\vm\_core.h</FilePath>
             </File>
           </Files>
         </Group>

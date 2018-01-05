@@ -12,8 +12,6 @@
 #ifndef __HOSTX_API_CORE
 #define __HOSTX_API_CORE
 
-    #include "../hostx/facade.h"
-
     #define __RESERVED      0x00
     #define __PROTO         0xA0
     #define __VM            0xB0
@@ -55,24 +53,24 @@
     #define MEMWRITE         __USER+0x02
     #define USER_3           __USER+0x03
 
-    extern int hostapi_MCU_MEMREAD (HOSTX_VM_CMD*);
-    extern int hostapi_MCU_MEMWRITE(HOSTX_VM_CMD*);
+    //extern int hostapi_MCU_MEMREAD (HOSTX_VM_CMD*);
+    //extern int hostapi_MCU_MEMWRITE(HOSTX_VM_CMD*);
 
-    extern int  hostapi_PROTO_MODE    (char*);
-    extern int  hostapi_PROTO_CONNECT (char*);
-    extern int  hostapi_PROTO_ECHO    (char*);
-    extern int  hostapi_PROTO_SYNC    (char *ptr_frame);
+    //extern int  hostapi_PROTO_MODE    (char*);
+    //extern int  hostapi_PROTO_CONNECT (char*);
+    //extern int  hostapi_PROTO_ECHO    (char*);
+    //extern int  hostapi_PROTO_SYNC    (char *ptr_frame);
 
-    extern char hostapi_CG_BITBLT   	();
-    extern int  hostapi_CG_CLEAR    	();
-    extern char hostapi_CG_FONT     	();
-    extern int  hostapi_CG_INIT     	(char *);
-    extern int  hostapi_CG_INFO     	(char *);
+    //extern char hostapi_CG_BITBLT   	();
+    //extern int  hostapi_CG_CLEAR    	();
+    //extern char hostapi_CG_FONT     	();
+    //extern int  hostapi_CG_INIT     	(char *);
+    //extern int  hostapi_CG_INFO     	(char *);
 
-    extern int  hostapi_VM_PING      	(char *);
-    extern int  hostapi_VM_TERMINATE 	();
-    extern int  hostapi_VM_RESTART   	();
-    extern int  hostapi_VM_MEMREAD   	();
-    extern int  hostapi_VM_MEMWRITE  	();
+    //extern int  hostapi_VM_PING      	(char *);
+    //extern int  hostapi_VM_TERMINATE 	();
+    //extern int  hostapi_VM_RESTART   	();
+    //extern int  hostapi_VM_MEMREAD   	();
+    //extern int  hostapi_VM_MEMWRITE  	();
 
 #endif

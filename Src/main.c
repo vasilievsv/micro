@@ -12,13 +12,13 @@ int main(void)
 {
     SystemClock_Config();
     
-    //VM_HostCommand( VM_PAUSE         , &sys_pause            , 150600);
-    //VM_HostCommand( VM_RESTART       , &sys_restart          , 1);
-    //VM_HostCommand( VM_TERMINATE     , &sys_terminate        , 1);
+    VM_HostAPI( VM_PAUSE         , &sys_pause            , 150600);
+    VM_HostAPI( VM_RESTART       , &sys_restart          , 1);
+    VM_HostAPI( VM_TERMINATE     , &sys_terminate        , 1);
     
-    INTERCOM_CreateChannel( 0, &RECEIPT_SimpleComPort );
-    //INTERCOM_CreateChannel( RECEIPT_Dummy    ,32 ,32 );
-    //INTERCOM_CreateChannel( RECEIPT_Dummy    ,32 ,32 );
+    INTERCOM_OpenChannel( 0, &RECEIPT_SimpleComPort );
+    INTERCOM_OpenChannel( 1, &RECEIPT_SimpleRadioPort );
+    INTERCOM_OpenChannel( 2, &RECEIPT_Dummy );
     
     loop:while(1)
     {

@@ -41,8 +41,8 @@
         
     }IO_CHANNEL;
     
-    extern IO_CHANNEL* INTERCOM_GetChannel   (uint8_t index);
-    extern IO_CHANNEL* INTERCOM_CreateChannel(uint8_t , COOK_RECEIPT*);
+    extern IO_CHANNEL* INTERCOM_GetChannel (uint8_t index);
+    extern IO_CHANNEL* INTERCOM_OpenChannel(uint8_t , COOK_RECEIPT*);
     
     extern void INTERCOM_Write(void *,uint16_t);
     extern void INTERCOM_Setup();

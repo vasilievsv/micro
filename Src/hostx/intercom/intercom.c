@@ -26,7 +26,7 @@
     ///
     ///
     ///
-    IO_CHANNEL* INTERCOM_CreateChannel(uint8_t index, COOK_RECEIPT* _receipt)
+    IO_CHANNEL* INTERCOM_OpenChannel(uint8_t index, COOK_RECEIPT* _receipt)
     {
         _channels[index]         = (IO_CHANNEL*)malloc(sizeof(IO_CHANNEL));
         

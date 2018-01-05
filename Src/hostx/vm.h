@@ -2,6 +2,7 @@
 #define __HOSTX_VM
 
     #include "facade.h"
+    #include "vm/_core.h"
 
     typedef int(*API_NativeFunc)(char *);
 
@@ -26,7 +27,7 @@
     extern unsigned char   vm_stream_2 [32];
 
     extern inline void VM_Update();
-    extern void VM_HostCommand  ( uint8_t, API_NativeFunc, uint32_t );
+    extern void VM_HostAPI  ( uint8_t, API_NativeFunc, uint32_t );
     extern void HOSTX_ProcClear ();
     extern void HOSTX_ProcRun   ( uint8_t* ,uint16_t);
 

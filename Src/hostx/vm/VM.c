@@ -181,7 +181,7 @@ void HOSTX_ProcWipe()
 /// 
 /// 
 /// 
-void VM_HostCommand(uint8_t cmd, API_NativeFunc ptr, uint32_t time)
+void VM_HostAPI(uint8_t cmd, API_NativeFunc ptr, uint32_t time)
 {
     // Создаем структуры и сохраняем указатель в таблице    
     // TODO: освобождение памяти free(ptr);
