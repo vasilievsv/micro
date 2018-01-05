@@ -1,8 +1,8 @@
-#ifndef __HOSTX_VM
-#define __HOSTX_VM
+#ifndef __SCRIPT_VM
+#define __SCRIPT_VM
 
     #include "facade.h"
-    #include "vm/_core.h"
+    #include "script/HOSTAPI.h"
 
     typedef int(*API_NativeFunc)(char *);
 

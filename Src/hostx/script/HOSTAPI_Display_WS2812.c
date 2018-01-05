@@ -30,9 +30,9 @@
 
 */
 
-#include "tiny.h"
-#include "tiny_opcode.h"
-#include "../tiny.CG/video.h"
+//#include "tiny.h"
+//#include "tiny_opcode.h"
+//#include "../tiny.CG/video.h"
 
 //  
 // FA-08-24-00
@@ -57,6 +57,8 @@ int hostapi_CG_INFO(char *ptr_frame)
 //
 // 00-00-00-00
 //
+
+    /*
 inline char hostapi_CG_FONT(uint32_t *ptr_frame)
 {
     Color24_t ColorPixelON =  {0x40,0x40,0x40};
@@ -76,7 +78,8 @@ inline char hostapi_CG_FONT(uint32_t *ptr_frame)
     
     //striprefresh();
     return 4;
-}
+    */
+//}
     
 ///
 /// HEX: C3-52-80-47-80-42-80
@@ -84,6 +87,7 @@ inline char hostapi_CG_FONT(uint32_t *ptr_frame)
 ///					 t  v  t  v  t  v
 inline int hostapi_CG_CLEAR(char *ptr_frame)
 {
+    /*
     // двигаем на данные
     ptr_frame = ptr_frame+( 1 * sizeof(*ptr_frame));
     
@@ -100,7 +104,7 @@ inline int hostapi_CG_CLEAR(char *ptr_frame)
     
     while (!ws2812b_IsReady()); // wait
     ws2812b_SendRGB(video_buff_0,192);
-        
+      */  
     return 6;
 }
     
@@ -111,6 +115,7 @@ inline int hostapi_CG_CLEAR(char *ptr_frame)
 ///
 inline char hostapi_CG_BITBLT(char *ptr_frame)
 {
+    /*
     char frame_num   = (char)*(ptr_frame+(0 * sizeof(*ptr_frame)));
     
     char r      = 0;
@@ -136,6 +141,6 @@ inline char hostapi_CG_BITBLT(char *ptr_frame)
     
     //while (!ws2812b_IsReady()); // wait
     ws2812b_SendRGB(video_buff_0,192);
-    
+    */
     return 255;
 }
