@@ -520,27 +520,27 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>micro/api</GroupName>
+          <GroupName>User/hostapi</GroupName>
           <Files>
             <File>
               <FileName>API_Display_WS2812.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\src\micro.api\API_Display_WS2812.c</FilePath>
+              <FilePath>..\src\micro.hostapi\API_Display_WS2812.c</FilePath>
             </File>
             <File>
               <FileName>API_Host.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\src\micro.api\API_Host.c</FilePath>
+              <FilePath>..\src\micro.hostapi\API_Host.c</FilePath>
             </File>
             <File>
               <FileName>API_Mem.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\src\micro.api\API_Mem.c</FilePath>
+              <FilePath>..\src\micro.hostapi\API_Mem.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>micro/cookbook</GroupName>
+          <GroupName>User/cookbook</GroupName>
           <Files>
             <File>
               <FileName>COOK_LL_CRC32.c</FileName>
