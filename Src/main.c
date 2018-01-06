@@ -1,7 +1,7 @@
 #include "main.h"
-#include "hostx/cook.h"
-#include "hostx/intercom.h"
-#include "hostx/script.h"
+#include "micro/cook.h"
+#include "micro/intercom.h"
+#include "micro/script.h"
 
 
 extern COOK_RECEIPT  RECEIPT_SimpleDWT;

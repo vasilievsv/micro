@@ -7,18 +7,22 @@
   * @brief   
   ******************************************************************************
 */
-    #include "../hostx/cook.h"
+    #include "../micro/cook.h"
     
-    void COOK_LL_Dummy(COOK_RECEIPT* xres)
+    void COOK_LL_SimpleDebug(COOK_RECEIPT* xres)
     {
-        __NOP(); // 4 такта, жду...
-        __NOP();
-        __NOP();
+        if (!(CoreDebug->DEMCR & CoreDebug_DEMCR_TRCENA_Msk)) 
+        {
+            CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+            
+            DWT->CYCCNT  = 0;
+            DWT->CTRL   |= DWT_CTRL_CYCCNTENA_Msk;
+        }
     }
     
-    COOK_RECEIPT RECEIPT_Dummy =
+    COOK_RECEIPT RECEIPT_SimpleDWT =
     {
-         .cook       = &COOK_LL_Dummy
+         .cook       = &COOK_LL_SimpleDebug
         
         ,.use_usart  = 0
         ,.use_gpio   = 0

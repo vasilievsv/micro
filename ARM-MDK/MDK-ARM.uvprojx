@@ -512,100 +512,130 @@
               <FileType>1</FileType>
               <FilePath>../Src/stm32f1xx_it.c</FilePath>
             </File>
+            <File>
+              <FileName>system_stm32f1xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\system_stm32f1xx.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>hostx</GroupName>
+          <GroupName>micro/api</GroupName>
           <Files>
             <File>
-              <FileName>intercom.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\hostx\intercom.h</FilePath>
+              <FileName>API_Display_WS2812.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\micro.api\API_Display_WS2812.c</FilePath>
             </File>
             <File>
-              <FileName>vm.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\hostx\vm.h</FilePath>
+              <FileName>API_Host.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\micro.api\API_Host.c</FilePath>
             </File>
             <File>
-              <FileName>facade.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\hostx\facade.h</FilePath>
-            </File>
-            <File>
-              <FileName>cooking.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\hostx\cooking.h</FilePath>
+              <FileName>API_Mem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\micro.api\API_Mem.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>hostx/intercom</GroupName>
-          <Files>
-            <File>
-              <FileName>intercom.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\hostx\intercom\intercom.c</FilePath>
-            </File>
-            <File>
-              <FileName>io_channel.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\hostx\intercom\io_channel.c</FilePath>
-            </File>
-            <File>
-              <FileName>io_stream.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\hostx\intercom\io_stream.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>hostx/cooking</GroupName>
-          <Files>
-            <File>
-              <FileName>cooking.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\hostx\cooking\cooking.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>hostx/vm</GroupName>
-          <Files>
-            <File>
-              <FileName>VM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\hostx\vm\VM.c</FilePath>
-            </File>
-            <File>
-              <FileName>_core.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\hostx\vm\_core.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>User/cookbook</GroupName>
+          <GroupName>micro/cookbook</GroupName>
           <Files>
             <File>
               <FileName>COOK_LL_CRC32.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\src\cookbook\COOK_LL_CRC32.c</FilePath>
+              <FilePath>..\src\micro.cookbook\COOK_LL_CRC32.c</FilePath>
+            </File>
+            <File>
+              <FileName>COOK_LL_DefaultComPort.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\micro.cookbook\COOK_LL_DefaultComPort.c</FilePath>
+            </File>
+            <File>
+              <FileName>COOK_LL_DefaultRadioPort.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\micro.cookbook\COOK_LL_DefaultRadioPort.c</FilePath>
             </File>
             <File>
               <FileName>COOK_LL_Dummy.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\src\cookbook\COOK_LL_Dummy.c</FilePath>
+              <FilePath>..\src\micro.cookbook\COOK_LL_Dummy.c</FilePath>
             </File>
             <File>
-              <FileName>COOK_LL_SimpleComPort.c</FileName>
+              <FileName>COOK_LL_DWT.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\src\cookbook\COOK_LL_SimpleComPort.c</FilePath>
+              <FilePath>..\src\micro.cookbook\COOK_LL_DWT.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>micro</GroupName>
+          <Files>
+            <File>
+              <FileName>cook.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\micro\cook.h</FilePath>
             </File>
             <File>
-              <FileName>COOK_LL_SimpleRadioPort.c</FileName>
+              <FileName>facade.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\micro\facade.h</FilePath>
+            </File>
+            <File>
+              <FileName>intercom.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\micro\intercom.h</FilePath>
+            </File>
+            <File>
+              <FileName>script.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\micro\script.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>micro/intercom</GroupName>
+          <Files>
+            <File>
+              <FileName>intercom.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\src\cookbook\COOK_LL_SimpleRadioPort.c</FilePath>
+              <FilePath>..\src\micro\intercom\intercom.c</FilePath>
+            </File>
+            <File>
+              <FileName>io_channel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\micro\intercom\io_channel.c</FilePath>
+            </File>
+            <File>
+              <FileName>io_stream.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\micro\intercom\io_stream.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>micro/cook</GroupName>
+          <Files>
+            <File>
+              <FileName>cook.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\micro\cook\cook.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>micro/script</GroupName>
+          <Files>
+            <File>
+              <FileName>API.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\micro\script\API.h</FilePath>
+            </File>
+            <File>
+              <FileName>vm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\micro\script\vm.c</FilePath>
             </File>
           </Files>
         </Group>

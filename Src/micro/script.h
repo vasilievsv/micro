@@ -2,18 +2,18 @@
 #define __SCRIPT_VM
 
     #include "facade.h"
-    #include "script/HOSTAPI.h"
+    #include "script/API.h"
 
     typedef int(*API_NativeFunc)(char *);
 
-    typedef struct STRUCT_VM_API
+    typedef struct 
     {
         API_NativeFunc func;
         uint32_t    tick;
         
     }VM_API;
     
-    typedef struct STRUCT_VM_OPCODE
+    typedef struct 
     {
         uint8_t  code;
         uint8_t  size;
