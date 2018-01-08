@@ -1,39 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
+    <Filter Include="User">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
+    <Filter Include="User/cookbook">
+      <UniqueIdentifier>{023e533f-80e3-4642-a237-159343449384}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="User/hostapi">
+      <UniqueIdentifier>{ecfd2ecf-aa20-4e62-a34d-dad8e3097e2a}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="micro">
+      <UniqueIdentifier>{ae330aaa-b132-4072-9e9f-2fb4778924ff}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="micro/intercom">
+      <UniqueIdentifier>{d3a5eb10-2ace-48e2-b5e4-359925ec8a57}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="mirco/cook">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="micro/script">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\hostx\facade.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\..\src\micro\script\API.h">
+      <Filter>micro/script</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\hostx\structs.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\..\src\micro\cook.h">
+      <Filter>micro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\micro\facade.h">
+      <Filter>micro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\micro\intercom.h">
+      <Filter>micro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\micro\script.h">
+      <Filter>micro</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\hostx\hostx_Clock.c">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\..\src\micro\script\vm.c">
+      <Filter>micro/script</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\hostx\hostx_Device.c">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\..\src\micro\cook\cook.c">
+      <Filter>mirco/cook</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\hostx\hostx_Intercom.c">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\..\src\micro\intercom\intercom.c">
+      <Filter>micro/intercom</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\hostx\hostx_Proc.c">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\..\src\micro\intercom\io_channel.c">
+      <Filter>micro/intercom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\micro\intercom\io_stream.c">
+      <Filter>micro/intercom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\micro.hostapi\API_Display_WS2812.c">
+      <Filter>User/hostapi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\micro.hostapi\API_Host.c">
+      <Filter>User/hostapi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\micro.hostapi\API_Mem.c">
+      <Filter>User/hostapi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\micro.cookbook\COOK_LL_CRC32.c">
+      <Filter>User/cookbook</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\micro.cookbook\COOK_LL_DefaultComPort.c">
+      <Filter>User/cookbook</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\micro.cookbook\COOK_LL_DefaultRadioPort.c">
+      <Filter>User/cookbook</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\micro.cookbook\COOK_LL_Dummy.c">
+      <Filter>User/cookbook</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\micro.cookbook\COOK_LL_DWT.c">
+      <Filter>User/cookbook</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

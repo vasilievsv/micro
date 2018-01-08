@@ -181,7 +181,7 @@ void HOSTX_ProcWipe()
 /// 
 /// 
 /// 
-void VM_BindAPI(uint8_t cmd, API_NativeFunc ptr, uint32_t time)
+void SCRIPT_BindAPI(uint8_t cmd, API_NativeFunc ptr, uint32_t time)
 {
     // Создаем структуры и сохраняем указатель в таблице    
     // TODO: освобождение памяти free(ptr);
@@ -191,7 +191,7 @@ void VM_BindAPI(uint8_t cmd, API_NativeFunc ptr, uint32_t time)
 }
 
 
-inline void VM_Update()
+inline void SCRIPT_VM_Tick()
 {
     if (!VM_CHECK_end_programm())
     {
