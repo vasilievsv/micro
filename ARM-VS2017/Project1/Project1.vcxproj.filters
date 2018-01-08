@@ -87,5 +87,14 @@
     <ClCompile Include="..\..\src\micro.cookbook\COOK_LL_DWT.c">
       <Filter>User/cookbook</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\main.c">
+      <Filter>User</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\stm32f1xx_it.c">
+      <Filter>User</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\system_stm32f1xx.c">
+      <Filter>User</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

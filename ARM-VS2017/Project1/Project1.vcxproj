@@ -26,6 +26,7 @@
     <ClInclude Include="..\..\src\micro\script\API.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Src\main.c" />
     <ClCompile Include="..\..\src\micro.cookbook\COOK_LL_CRC32.c" />
     <ClCompile Include="..\..\src\micro.cookbook\COOK_LL_DefaultComPort.c" />
     <ClCompile Include="..\..\src\micro.cookbook\COOK_LL_DefaultRadioPort.c" />
@@ -39,6 +40,8 @@
     <ClCompile Include="..\..\src\micro\intercom\io_channel.c" />
     <ClCompile Include="..\..\src\micro\intercom\io_stream.c" />
     <ClCompile Include="..\..\src\micro\script\vm.c" />
+    <ClCompile Include="..\..\Src\stm32f1xx_it.c" />
+    <ClCompile Include="..\..\Src\system_stm32f1xx.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B27C9C7B-A877-463A-89BE-3498A2D90B39}</ProjectGuid>
