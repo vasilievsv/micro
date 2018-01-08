@@ -6,9 +6,13 @@
   * @date     4 jan 2018 
   * @brief   
   ******************************************************************************
-*/
+  
+    ..\doc\stm32f100rbt6b.pdf page 27
+
+  */
 
 #include "../micro/cook.h"
+
 
 void COOK_LL_SimpleUSART(COOK_RECEIPT* xres)
 {
@@ -18,7 +22,7 @@ void COOK_LL_SimpleUSART(COOK_RECEIPT* xres)
     
     LL_GPIO_SetPinMode  (xres->use_gpio, xres->gpio_pinTX,  LL_GPIO_MODE_ALTERNATE );
     LL_GPIO_SetPinSpeed (xres->use_gpio, xres->gpio_pinTX,  LL_GPIO_SPEED_FREQ_LOW );
-    LL_GPIO_SetPinPull  (xres->use_gpio, xres->gpio_pinTX,  LL_GPIO_PULL_UP );
+    //LL_GPIO_SetPinPull  (xres->use_gpio, xres->gpio_pinTX,  LL_GPIO_PULL_UP );
     
     LL_GPIO_SetPinMode  (xres->use_gpio, xres->gpio_pinRX,  LL_GPIO_MODE_FLOATING );
     LL_GPIO_SetPinSpeed (xres->use_gpio, xres->gpio_pinRX,  LL_GPIO_SPEED_FREQ_LOW );
@@ -35,11 +39,11 @@ void COOK_LL_SimpleUSART(COOK_RECEIPT* xres)
         ,.Mode                   = LL_DMA_MODE_NORMAL
         ,.Direction              = LL_DMA_DIRECTION_MEMORY_TO_PERIPH
                      
-        //,.MemoryOrM2MDstAddress  = (uint32_t)&device_bufferTx
+        ,.MemoryOrM2MDstAddress  = (uint32_t)&xres->dma_m2p_src
         ,.MemoryOrM2MDstIncMode  = LL_DMA_MEMORY_INCREMENT
         ,.MemoryOrM2MDstDataSize = LL_DMA_MDATAALIGN_BYTE
         
-        ,.PeriphOrM2MSrcAddress  = (uint32_t)&USART1->DR
+        ,.PeriphOrM2MSrcAddress  = (uint32_t)&xres->dma_m2p_dst
         ,.PeriphOrM2MSrcIncMode  = LL_DMA_PERIPH_NOINCREMENT
         ,.PeriphOrM2MSrcDataSize = LL_DMA_PDATAALIGN_BYTE
                      
@@ -58,11 +62,11 @@ void COOK_LL_SimpleUSART(COOK_RECEIPT* xres)
         ,.Mode                   = LL_DMA_MODE_CIRCULAR
         ,.Direction              = LL_DMA_DIRECTION_PERIPH_TO_MEMORY
 
-        //,.PeriphOrM2MSrcAddress  = (uint32_t)&USART1->DR
+        ,.PeriphOrM2MSrcAddress  = xres->dma_p2m_src
         ,.PeriphOrM2MSrcIncMode  = LL_DMA_PERIPH_NOINCREMENT
         ,.PeriphOrM2MSrcDataSize = LL_DMA_PDATAALIGN_BYTE
 
-        //,.MemoryOrM2MDstAddress  = (uint32_t)&device_bufferRx
+        ,.MemoryOrM2MDstAddress  = (uint32_t)&xres->dma_p2m_dst
         ,.MemoryOrM2MDstIncMode  = LL_DMA_MEMORY_INCREMENT
         ,.MemoryOrM2MDstDataSize = LL_DMA_PDATAALIGN_BYTE
 
@@ -73,7 +77,7 @@ void COOK_LL_SimpleUSART(COOK_RECEIPT* xres)
     LL_DMA_EnableIT_HT( xres->use_dma, xres->dma_chRX );
     NVIC_EnableIRQ( DMA1_Channel5_IRQn );
     
-    LL_DMA_EnableChannel(xres->use_dma,xres->dma_chRX);
+    LL_DMA_EnableChannel(xres->use_dma, xres->dma_chRX);
     
     // USART
     LL_APB2_GRP1_EnableClock( LL_APB2_GRP1_PERIPH_USART1 );
@@ -98,16 +102,32 @@ void COOK_LL_SimpleUSART(COOK_RECEIPT* xres)
 }
 
 
-COOK_RECEIPT RECEIPT_SimpleComPort =
+COOK_RECEIPT RECEIPT_DataPort_Master = 
 {
      .cook       = &COOK_LL_SimpleUSART
     
     ,.use_usart  = USART1
     ,.use_gpio   = GPIOA
-    ,.use_dma    = DMA1
+    ,.use_dma    = DMA1_BASE
     
     ,.dma_chTX   = LL_DMA_CHANNEL_4
     ,.dma_chRX   = LL_DMA_CHANNEL_5
+    
     ,.gpio_pinTX = LL_GPIO_PIN_9
     ,.gpio_pinRX = LL_GPIO_PIN_10
+};
+
+COOK_RECEIPT RECEIPT_DataPort_RequestAnswer = 
+{
+    .cook           = &COOK_LL_SimpleUSART
+    
+    ,.use_usart     = USART3
+    ,.use_gpio      = GPIOA
+    ,.use_dma       = DMA1_BASE
+    
+    ,.dma_chTX      = LL_DMA_CHANNEL_4
+    ,.dma_chRX      = LL_DMA_CHANNEL_5
+    
+    ,.gpio_pinTX    = LL_GPIO_PIN_9
+    ,.gpio_pinRX    = LL_GPIO_PIN_10
 };

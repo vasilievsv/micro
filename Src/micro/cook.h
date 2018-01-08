@@ -11,10 +11,15 @@
         
         USART_TypeDef*  use_usart;
         GPIO_TypeDef*   use_gpio;
-        DMA_TypeDef*    use_dma;
+        uint32_t        use_dma;
         
         uint32_t        dma_chTX;
+        uint32_t        dma_m2p_dst;
+        uint32_t        dma_m2p_src;
+        
         uint32_t        dma_chRX;
+        uint32_t        dma_p2m_dst;
+        uint32_t        dma_p2m_src;
         
         uint32_t        gpio_pinTX;
         uint32_t        gpio_pinRX;

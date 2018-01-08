@@ -5,7 +5,7 @@
 
 
 extern COOK_RECEIPT  RECEIPT_SimpleDWT;
-extern COOK_RECEIPT  RECEIPT_SimpleComPort;
+extern COOK_RECEIPT  RECEIPT_DataPort_Master;
 extern COOK_RECEIPT  RECEIPT_SimpleRadioPort;
 extern COOK_RECEIPT  RECEIPT_CRC32;
 extern COOK_RECEIPT  RECEIPT_Dummy;
@@ -22,9 +22,9 @@ int main(void)
     SCRIPT_BindAPI( VM_RESTART       , &sys_restart          , 1);
     SCRIPT_BindAPI( VM_TERMINATE     , &sys_terminate        , 1);
     
-    INTERCOM_OpenChannel( 0, &RECEIPT_SimpleComPort );
-    INTERCOM_OpenChannel( 1, &RECEIPT_SimpleRadioPort );
-    INTERCOM_OpenChannel( 2, &RECEIPT_Dummy );
+    INTERCOM_OpenChannel( 0, &RECEIPT_DataPort_Master );
+    //INTERCOM_OpenChannel( 1, &RECEIPT_SimpleRadioPort );
+    //INTERCOM_OpenChannel( 2, &RECEIPT_Dummy );
     
     loop:while(1)
     {
@@ -34,14 +34,14 @@ int main(void)
 
 void DMA1_Channel4_IRQHandler(void)
 { 
-    IO_CHANNEL* T = INTERCOM_GetChannel(0);
-    T->Handler_RX( T ); 
+    IO_CHANNEL* temp = INTERCOM_GetChannel(0);
+    temp->Handler_TX( temp ); 
 }
 
 void DMA1_Channel5_IRQHandler(void)
 { 
-    IO_CHANNEL* T = INTERCOM_GetChannel(0);
-    T->Handler_TX( T ); 
+    IO_CHANNEL* temp = INTERCOM_GetChannel(0);
+    temp->Handler_RX( temp ); 
 }
 
 /* ==============   BOARD SPECIFIC CONFIGURATION CODE BEGIN    ============== */

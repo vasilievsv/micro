@@ -10,8 +10,8 @@
     #include "../intercom.h"
     
     //TODO: Сильная связанность с IO_CHANNEL
-    extern void IO_CHANNEL_StreamIn (IO_CHANNEL* channel);
-    extern void IO_CHANNEL_StreamOut(IO_CHANNEL* channel);
+    extern void IO_CHANNEL_StreamIn (void* channel);
+    extern void IO_CHANNEL_StreamOut(void* channel);
     
     IO_CHANNEL* _channels[4] = NULL;
     uint8_t     _countChannel= 0;
@@ -21,7 +21,8 @@
     ///
     IO_CHANNEL* INTERCOM_GetChannel(uint8_t index)
     {
-        return _channels[index];
+        IO_CHANNEL* T = _channels[index];
+        return  T;
     }
     ///
     ///
@@ -34,10 +35,17 @@
         _channels[index]->raw_IN = (uint8_t*)malloc(32*sizeof(uint8_t));
         _channels[index]->raw_OUT= (uint8_t*)malloc(32*sizeof(uint8_t));
         
-        _channels[index]->Handler_RX= &IO_CHANNEL_StreamIn;
-        _channels[index]->Handler_TX= &IO_CHANNEL_StreamOut;
+        _channels[index]->Handler_RX= IO_CHANNEL_StreamIn;
+        _channels[index]->Handler_TX= IO_CHANNEL_StreamOut;
         
         //TODO: Абстракция для инициализации перефирии
+        _receipt->dma_p2m_dst = (uint32_t)&_channels[index]->raw_IN;
+        _receipt->dma_p2m_src = (uint32_t)&_receipt->use_usart->DR;
+
+        _receipt->dma_m2p_dst = (uint32_t)&_channels[index]->raw_OUT;
+        _receipt->dma_m2p_src = (uint32_t)&_receipt->use_usart->DR;
+
+        
         COOK_HW( _receipt );
         
         return _channels[index];

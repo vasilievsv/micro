@@ -5,9 +5,8 @@
     
     #include "facade.h"
     #include "cook.h"
-    
-    
-    typedef int(*IO_CALLBACK)( void* );
+        
+    typedef void(*IO_CALLBACK)( void* );
 
     typedef struct 
     {

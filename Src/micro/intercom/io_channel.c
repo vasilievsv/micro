@@ -3,24 +3,27 @@
     ///
     ///
     ///
-    void IO_CHANNEL_StreamOut(IO_CHANNEL* io)
+    #define _CAST(x)  ((IO_CHANNEL*)x)
+    
+    void IO_CHANNEL_StreamOut(void* _io)
     {
+        IO_CHANNEL* io = (IO_CHANNEL*)_io;
         
-        if(io->hw->use_dma->ISR & DMA_ISR_TCIF4) 
+        if( io->hw->use_dma->ISR & DMA_ISR_TCIF4) 
         {
-            LL_DMA_DisableChannel(io->hw->use_dma, io->hw->dma_chTX);
-            LL_DMA_ClearFlag_TC4 (io->hw->use_dma);
+            LL_DMA_DisableChannel( io->hw->use_dma, io->hw->dma_chTX);
+            LL_DMA_ClearFlag_TC4 ( io->hw->use_dma);
             
             memset(&io->stream_OUT,0,32);
         }//.Если обмен завершен
         
-        if(io->hw->use_dma->ISR & DMA_ISR_HTIF4) 
+        if( io->hw->use_dma->ISR & DMA_ISR_HTIF4) 
         {
-            LL_DMA_ClearFlag_HT4 (io->hw->use_dma);
+            LL_DMA_ClearFlag_HT4 ( io->hw->use_dma);
         }//.Если передана половина буфера
         
         
-        if(io->hw->use_dma->ISR & DMA_ISR_TEIF4) 
+        if( io->hw->use_dma->ISR & DMA_ISR_TEIF4) 
         {
             
         }//.Если произошла ошибка при обмене 
@@ -29,9 +32,12 @@
     ///
     ///
     ///
-    void IO_CHANNEL_StreamIn(IO_CHANNEL* io)
+    void IO_CHANNEL_StreamIn(void* _io)
     {
-        if(io->hw->use_dma->ISR & DMA_ISR_TCIF5) // Если обмен завершен
+        IO_CHANNEL*  io     = (IO_CHANNEL*)_io;
+        DMA_TypeDef* DMAx   = (DMA_TypeDef*)io->hw->use_dma;
+        
+        if( DMAx->ISR & DMA_ISR_TCIF5) // Если обмен завершен
         {
             //HOSTX_PACK *_pack = (HOSTX_PACK*)&device_bufferRx;
             
@@ -47,15 +53,15 @@
             //INTERCOM_Flush();
             //}
             
-            LL_DMA_ClearFlag_TC5 (io->hw->use_dma);
+            LL_DMA_ClearFlag_TC5 ( DMAx );
         }
         
-        if(io->hw->use_dma->ISR & DMA_ISR_HTIF5) 
+        if( DMAx->ISR & DMA_ISR_HTIF5) 
         {
             
         }// Если передана половина буфера
         
-        if(io->hw->use_dma->ISR & DMA_ISR_TEIF5) 
+        if( DMAx->ISR & DMA_ISR_TEIF5) 
         {
             
         }// Если произошла ошибка при обмене
