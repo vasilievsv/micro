@@ -565,7 +565,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>micro</GroupName>
+          <GroupName>User/micro</GroupName>
           <Files>
             <File>
               <FileName>cook.h</FileName>
