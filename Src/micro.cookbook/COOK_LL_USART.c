@@ -16,9 +16,11 @@
 
 void COOK_LL_SetupUSART(COOK_RECEIPT* xres)
 {
+
+    
     // GPIO
-    LL_APB2_GRP1_EnableClock( LL_APB2_GRP2_PERIPH_AFIO );
-    LL_APB2_GRP1_EnableClock( LL_APB2_GRP2_Pre _PERIPH_GPIOB );
+    LL_APB2_GRP1_EnableClock( LL_APB2_GRP1_PERIPH_AFIO );
+    LL_APB2_GRP1_EnableClock( LL_APB2_GRP1_Pre _PERIPH_GPIOA );
     
     LL_GPIO_SetPinMode  (xres->use_gpio, xres->gpio_pinTX,  LL_GPIO_MODE_ALTERNATE );
     LL_GPIO_SetPinSpeed (xres->use_gpio, xres->gpio_pinTX,  LL_GPIO_SPEED_FREQ_LOW );
