@@ -6,3 +6,5 @@
 /ARM-GCC/*.DS_Store
 *.DS_Store
 *.opendb
+/ARM-VS2017/.vs/Project1/v15/Browse.VC.db
+/ARM-VS2017/Project1.VC.db
