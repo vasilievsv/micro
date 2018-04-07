@@ -34,13 +34,14 @@ int main(void)
 void DMA1_Channel4_IRQHandler(void)
 { 
     IO_CHANNEL* temp = INTERCOM_GetChannel(0);
-    temp->Handler_TX(temp);
+    //temp->Handler_TX(temp);
 }
 
 void DMA1_Channel5_IRQHandler(void)
 { 
-    IO_CHANNEL* temp = INTERCOM_GetChannel(0);
-    temp->Handler_RX(temp); 
+    IO_CHANNEL* T = INTERCOM_GetChannel(0);
+    
+    T->Handler_RX(temp);
 }
 
 /* ==============   BOARD SPECIFIC CONFIGURATION CODE BEGIN    ============== */
