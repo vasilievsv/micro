@@ -142,7 +142,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 /// Обработка завершение выполнения опкода
 ///////////////////////////////////////////////////////////////////////////////
-    int VM_CHECK_end_opcode()
+    int VM_is_opcode_end()
     {
         //если счетчик выполнения >= время выполнения
         if((r_1 >= r_2))
@@ -164,48 +164,30 @@
     /// Смещение(r_0) равно длинне программы(r_3).
     /// программа закончена
     ///
-    int VM_CHECK_end_programm()
+    int VM_is_stream_end()
     {
         return (r_0 >= r_3)? 1 : 0 ;
     }
     
+
+
+
+
+
+
 /// 
 /// 
 /// 
-void HOSTX_ProcWipe()
+void SCRIPT_VM_Reset()
 {
     for (register uint8_t i = 0; i != 255; i++)
         vm_tableAPI[i] = 0;
 }
 
-/// 
-/// 
-/// 
-void SCRIPT_BindAPI(uint8_t cmd, API_NativeFunc ptr, uint32_t time)
-{
-    // Создаем структуры и сохраняем указатель в таблице    
-    // TODO: освобождение памяти free(ptr);
-    vm_tableAPI[cmd] = (VM_API*)malloc(sizeof(VM_API));
-    vm_tableAPI[cmd]->func = ptr;
-    vm_tableAPI[cmd]->tick = time;
-}
-
-
-inline void SCRIPT_Tick()
-{
-    if (!VM_CHECK_end_programm())
-    {
-        if (VM_CHECK_end_opcode()) VM_next_opcode();
-        
-        VM_execute();
-    }
-}
-
-
 ///
 /// 
 ///
-void HOSTX_ProcRun(uint8_t* _ptr,uint16_t _size)
+void SCRIPT_VM_Run(uint8_t* _ptr,uint16_t _size)
 {
     uint8_t      _cursor = 0;
     VM_OPCODE*   vm_cmd;
@@ -216,7 +198,7 @@ void HOSTX_ProcRun(uint8_t* _ptr,uint16_t _size)
     {
         vm_cmd = (VM_OPCODE*)(_ptr + _cursor);
         
-        _flag = VM_Call( vm_cmd->code, vm_cmd );
+        _flag = SCRIPT_VM_Call( vm_cmd->code, vm_cmd );
         
         _cursor += (_flag == 1)?vm_cmd->size+2:1;
     }
@@ -225,7 +207,7 @@ void HOSTX_ProcRun(uint8_t* _ptr,uint16_t _size)
 ///
 ///
 ///
-int VM_Call(uint8_t cmd, void* ptr_frame) // ...arg
+int SCRIPT_VM_Call(uint8_t cmd, void* ptr_frame) // ...arg
 {
     if (cmd <= 255 && vm_tableAPI[cmd] != 0 && vm_tableAPI[cmd]->func != 0)
     {

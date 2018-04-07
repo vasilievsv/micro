@@ -54,7 +54,7 @@
                 
             }
             
-            HOSTX_ProcRun(ptr_data, header_size);
+            SCRIPT_VM_Run(ptr_data, header_size);
             
             INTERCOM_Flush();
             

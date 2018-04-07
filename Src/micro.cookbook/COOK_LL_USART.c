@@ -14,11 +14,11 @@
 #include "../micro/cook.h"
 
 
-void COOK_LL_SimpleUSART(COOK_RECEIPT* xres)
+void COOK_LL_SetupUSART(COOK_RECEIPT* xres)
 {
     // GPIO
-    LL_APB2_GRP1_EnableClock( LL_APB2_GRP1_PERIPH_AFIO );
-    LL_APB2_GRP1_EnableClock( LL_APB2_GRP1_PERIPH_GPIOA );
+    LL_APB2_GRP1_EnableClock( LL_APB2_GRP2_PERIPH_AFIO );
+    LL_APB2_GRP1_EnableClock( LL_APB2_GRP2_Pre _PERIPH_GPIOB );
     
     LL_GPIO_SetPinMode  (xres->use_gpio, xres->gpio_pinTX,  LL_GPIO_MODE_ALTERNATE );
     LL_GPIO_SetPinSpeed (xres->use_gpio, xres->gpio_pinTX,  LL_GPIO_SPEED_FREQ_LOW );
@@ -30,7 +30,7 @@ void COOK_LL_SimpleUSART(COOK_RECEIPT* xres)
     
     // DMA
     // MEMORY TO PERIPH
-    LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_DMA1);
+    LL_AHB1_GRP2_EnableClock(LL_AHB1_GRP2 _PERIPH_DMA1);
     
     LL_DMA_Init (DMA1,LL_DMA_CHANNEL_4, &(LL_DMA_InitTypeDef)
     {
@@ -46,7 +46,7 @@ void COOK_LL_SimpleUSART(COOK_RECEIPT* xres)
         ,.PeriphOrM2MSrcAddress  = xres->dma_m2p_src
         ,.PeriphOrM2MSrcIncMode  = LL_DMA_PERIPH_NOINCREMENT
         ,.PeriphOrM2MSrcDataSize = LL_DMA_PDATAALIGN_BYTE
-                     
+        
         ,.NbData                 = 32
     });
     
@@ -104,22 +104,22 @@ void COOK_LL_SimpleUSART(COOK_RECEIPT* xres)
 
 COOK_RECEIPT receipt_USE_USART_1 = 
 {
-     .cook       = &COOK_LL_SimpleUSART
+     .cook       = &COOK_LL_SetupUSART
     
     ,.use_usart  = USART1
-    ,.use_gpio   = GPIOA
+    ,.use_gpio   = GPIOB
     ,.use_dma    = DMA1
     
     ,.dma_chTX   = LL_DMA_CHANNEL_4
     ,.dma_chRX   = LL_DMA_CHANNEL_5
     
-    ,.gpio_pinTX = LL_GPIO_PIN_9
-    ,.gpio_pinRX = LL_GPIO_PIN_10
+    ,.gpio_pinTX = LL_GPIO_PIN_6
+    ,.gpio_pinRX = LL_GPIO_PIN_7
 };
 
 COOK_RECEIPT receipt_USE_USART_3 = 
 {
-    .cook           = &COOK_LL_SimpleUSART
+    .cook           = &COOK_LL_SetupUSART
     
     ,.use_usart     = USART3
     ,.use_gpio      = GPIOA

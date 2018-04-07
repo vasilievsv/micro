@@ -122,7 +122,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGTARM</Key>
-          <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=420,149,786,375,0)(1009=-1,-1,-1,-1,0)</Name>
+          <Name>(1010=238,123,648,670,0)(1007=105,137,282,402,0)(1008=603,134,969,360,0)(1009=657,142,891,680,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -149,9 +149,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>38</LineNumber>
+          <LineNumber>24</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134220338</Address>
+          <Address>134220312</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -160,14 +160,14 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>../Src/main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\STM32VL_Discovery\../Src/main.c\38</Expression>
+          <Expression>\\STM32VL_Discovery\../Src/main.c\24</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>45</LineNumber>
+          <LineNumber>42</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134220356</Address>
+          <Address>134220348</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -176,7 +176,23 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>../Src/main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\STM32VL_Discovery\../Src/main.c\45</Expression>
+          <Expression>\\STM32VL_Discovery\../Src/main.c\42</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>39</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134221458</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\src\micro\intercom\io_channel.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\STM32VL_Discovery\../src/micro/intercom/io_channel.c\39</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -195,7 +211,7 @@
         <Mm>
           <WinNumber>1</WinNumber>
           <SubType>0</SubType>
-          <ItemText>0x200005D4</ItemText>
+          <ItemText>0x40013804</ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>
       </MemoryWindow1>
@@ -235,6 +251,14 @@
         <Entry>
           <Name>System Viewer\DMA1</Name>
           <WinId>35905</WinId>
+        </Entry>
+        <Entry>
+          <Name>System Viewer\GPIOA</Name>
+          <WinId>35903</WinId>
+        </Entry>
+        <Entry>
+          <Name>System Viewer\GPIOB</Name>
+          <WinId>35902</WinId>
         </Entry>
         <Entry>
           <Name>System Viewer\USART1</Name>
@@ -471,7 +495,7 @@
 
   <Group>
     <GroupName>User</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -504,7 +528,7 @@
   </Group>
 
   <Group>
-    <GroupName>EXTERNAL/hostapi</GroupName>
+    <GroupName>my.hostapi</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -551,8 +575,8 @@
   </Group>
 
   <Group>
-    <GroupName>EXTERNAL/cookbook</GroupName>
-    <tvExp>0</tvExp>
+    <GroupName>my.cookbook</GroupName>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -577,8 +601,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\src\micro.cookbook\COOK_LL_DefaultComPort.c</PathWithFileName>
-      <FilenameWithoutPath>COOK_LL_DefaultComPort.c</FilenameWithoutPath>
+      <PathWithFileName>..\src\micro.cookbook\COOK_LL_Dummy.c</PathWithFileName>
+      <FilenameWithoutPath>COOK_LL_Dummy.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -590,8 +614,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\src\micro.cookbook\COOK_LL_DefaultRadioPort.c</PathWithFileName>
-      <FilenameWithoutPath>COOK_LL_DefaultRadioPort.c</FilenameWithoutPath>
+      <PathWithFileName>..\src\micro.cookbook\COOK_LL_DWT.c</PathWithFileName>
+      <FilenameWithoutPath>COOK_LL_DWT.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -603,8 +627,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\src\micro.cookbook\COOK_LL_Dummy.c</PathWithFileName>
-      <FilenameWithoutPath>COOK_LL_Dummy.c</FilenameWithoutPath>
+      <PathWithFileName>..\Src\micro.cookbook\COOK_LL_NRF24L01.c</PathWithFileName>
+      <FilenameWithoutPath>COOK_LL_NRF24L01.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -616,8 +640,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\src\micro.cookbook\COOK_LL_DWT.c</PathWithFileName>
-      <FilenameWithoutPath>COOK_LL_DWT.c</FilenameWithoutPath>
+      <PathWithFileName>..\Src\micro.cookbook\COOK_LL_USART.c</PathWithFileName>
+      <FilenameWithoutPath>COOK_LL_USART.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -625,7 +649,7 @@
 
   <Group>
     <GroupName>MICRO</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -684,8 +708,8 @@
   </Group>
 
   <Group>
-    <GroupName>MICRO/intercom</GroupName>
-    <tvExp>1</tvExp>
+    <GroupName>MICRO.intercom</GroupName>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -731,7 +755,7 @@
   </Group>
 
   <Group>
-    <GroupName>MICRO/cook</GroupName>
+    <GroupName>MICRO.cook</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -752,7 +776,7 @@
   </Group>
 
   <Group>
-    <GroupName>MICRO/script</GroupName>
+    <GroupName>MICRO.script</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -780,6 +804,19 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\src\micro\script\vm.c</PathWithFileName>
       <FilenameWithoutPath>vm.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>36</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Src\micro\script\script.c</PathWithFileName>
+      <FilenameWithoutPath>script.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

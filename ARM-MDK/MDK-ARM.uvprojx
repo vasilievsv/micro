@@ -515,7 +515,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>EXTERNAL/hostapi</GroupName>
+          <GroupName>my.hostapi</GroupName>
           <Files>
             <File>
               <FileName>API_Display_WS2812.c</FileName>
@@ -535,22 +535,12 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>EXTERNAL/cookbook</GroupName>
+          <GroupName>my.cookbook</GroupName>
           <Files>
             <File>
               <FileName>COOK_LL_CRC32.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\micro.cookbook\COOK_LL_CRC32.c</FilePath>
-            </File>
-            <File>
-              <FileName>COOK_LL_DefaultComPort.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\micro.cookbook\COOK_LL_DefaultComPort.c</FilePath>
-            </File>
-            <File>
-              <FileName>COOK_LL_DefaultRadioPort.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\micro.cookbook\COOK_LL_DefaultRadioPort.c</FilePath>
             </File>
             <File>
               <FileName>COOK_LL_Dummy.c</FileName>
@@ -561,6 +551,16 @@
               <FileName>COOK_LL_DWT.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\micro.cookbook\COOK_LL_DWT.c</FilePath>
+            </File>
+            <File>
+              <FileName>COOK_LL_NRF24L01.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\micro.cookbook\COOK_LL_NRF24L01.c</FilePath>
+            </File>
+            <File>
+              <FileName>COOK_LL_USART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\micro.cookbook\COOK_LL_USART.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -590,7 +590,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>MICRO/intercom</GroupName>
+          <GroupName>MICRO.intercom</GroupName>
           <Files>
             <File>
               <FileName>intercom.c</FileName>
@@ -610,7 +610,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>MICRO/cook</GroupName>
+          <GroupName>MICRO.cook</GroupName>
           <Files>
             <File>
               <FileName>cook.c</FileName>
@@ -620,7 +620,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>MICRO/script</GroupName>
+          <GroupName>MICRO.script</GroupName>
           <Files>
             <File>
               <FileName>API.h</FileName>
@@ -631,6 +631,11 @@
               <FileName>vm.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\micro\script\vm.c</FilePath>
+            </File>
+            <File>
+              <FileName>script.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\micro\script\script.c</FilePath>
             </File>
           </Files>
         </Group>

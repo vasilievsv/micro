@@ -26,15 +26,16 @@
     extern unsigned char   vm_stream_1 [32];
     extern unsigned char   vm_stream_2 [32];
 
-    extern void SCRIPT_Tick();
+    extern void SCRIPT_DoTick();
     extern void SCRIPT_BindAPI  ( uint8_t, API_NativeFunc, uint32_t );
     extern void HOSTX_ProcClear ();
-    extern void HOSTX_ProcRun   ( uint8_t* ,uint16_t);
+    extern void SCRIPT_VM_Run   ( uint8_t* ,uint16_t);
 
-
-    extern int  VM_Call  ( uint8_t ,void*);
+ extern VM_API*         vm_tableAPI[];
+    
+    extern int  SCRIPT_VM_Call  ( uint8_t ,void*);
     extern int  VM_CHECK_end_program();
-    extern int  VM_CHECK_end_opcode();
+    extern int  VM_is_opcode_end();
     extern void VM_execute();
     extern void VM_set_stream(char*);
     extern void VM_next_opcode();

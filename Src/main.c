@@ -6,7 +6,7 @@
 
 
 extern COOK_RECEIPT  receipt_ENABLE_DWT;
-extern COOK_RECEIPT  receipt_USE_USART_3;
+extern COOK_RECEIPT  receipt_USE_USART_1;
 extern COOK_RECEIPT  receipt_ENABLE_NRF24L01;
 extern COOK_RECEIPT  receipt_ENABLE_CRC32;
 
@@ -21,13 +21,13 @@ int main(void)
     SCRIPT_BindAPI( VM_RESTART       , &sys_restart          , 1);
     SCRIPT_BindAPI( VM_TERMINATE     , &sys_terminate        , 1);
     
-    INTERCOM_OpenChannel( 0, &receipt_USE_USART_3 );
+    INTERCOM_OpenChannel( 0, &receipt_USE_USART_1 );
     //INTERCOM_OpenChannel( 1, &receipt_ENABLE_NRF24L01 );
     //INTERCOM_OpenChannel( 2, &receipt_DUMMY );
     
     loop:while(1)
     {
-        SCRIPT_Tick();
+        //SCRIPT_DoTick();
     }
 }
 
