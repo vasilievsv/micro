@@ -16,7 +16,7 @@
         __NOP();
     }
     
-    COOK_RECEIPT RECEIPT_SimpleRadioPort =
+    COOK_RECEIPT receipt_ENABLE_NRF24L01 =
     {
          .cook       = &COOK_LL_SimpleRadioPort
         

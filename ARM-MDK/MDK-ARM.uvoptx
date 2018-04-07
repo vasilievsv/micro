@@ -145,7 +145,40 @@
           <Name>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_128 -FS08000000 -FL020000 -FP0($$Device:STM32F100R8$Flash\STM32F10x_128.FLM))</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint/>
+      <Breakpoint>
+        <Bp>
+          <Number>0</Number>
+          <Type>0</Type>
+          <LineNumber>38</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134220338</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>../Src/main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\STM32VL_Discovery\../Src/main.c\38</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>45</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134220356</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>../Src/main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\STM32VL_Discovery\../Src/main.c\45</Expression>
+        </Bp>
+      </Breakpoint>
       <WatchWindow1>
         <Ww>
           <count>0</count>
@@ -162,7 +195,7 @@
         <Mm>
           <WinNumber>1</WinNumber>
           <SubType>0</SubType>
-          <ItemText>b</ItemText>
+          <ItemText>0x200005D4</ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>
       </MemoryWindow1>
@@ -172,7 +205,7 @@
       <DebugFlag>
         <trace>0</trace>
         <periodic>1</periodic>
-        <aLwin>1</aLwin>
+        <aLwin>0</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
@@ -198,6 +231,16 @@
       <LintExecutable></LintExecutable>
       <LintConfigFile></LintConfigFile>
       <bLintAuto>0</bLintAuto>
+      <SystemViewers>
+        <Entry>
+          <Name>System Viewer\DMA1</Name>
+          <WinId>35905</WinId>
+        </Entry>
+        <Entry>
+          <Name>System Viewer\USART1</Name>
+          <WinId>35904</WinId>
+        </Entry>
+      </SystemViewers>
       <DebugDescription>
         <Enable>1</Enable>
         <EnableLog>0</EnableLog>
@@ -263,7 +306,7 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_utils.c</PathWithFileName>
+      <PathWithFileName>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_utils.c</PathWithFileName>
       <FilenameWithoutPath>stm32f1xx_ll_utils.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -276,7 +319,7 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_usart.c</PathWithFileName>
+      <PathWithFileName>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_usart.c</PathWithFileName>
       <FilenameWithoutPath>stm32f1xx_ll_usart.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -289,7 +332,7 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_tim.c</PathWithFileName>
+      <PathWithFileName>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_tim.c</PathWithFileName>
       <FilenameWithoutPath>stm32f1xx_ll_tim.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -302,7 +345,7 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_spi.c</PathWithFileName>
+      <PathWithFileName>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_spi.c</PathWithFileName>
       <FilenameWithoutPath>stm32f1xx_ll_spi.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -315,7 +358,7 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_rtc.c</PathWithFileName>
+      <PathWithFileName>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_rtc.c</PathWithFileName>
       <FilenameWithoutPath>stm32f1xx_ll_rtc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -328,7 +371,7 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_rcc.c</PathWithFileName>
+      <PathWithFileName>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_rcc.c</PathWithFileName>
       <FilenameWithoutPath>stm32f1xx_ll_rcc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -341,7 +384,7 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_pwr.c</PathWithFileName>
+      <PathWithFileName>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_pwr.c</PathWithFileName>
       <FilenameWithoutPath>stm32f1xx_ll_pwr.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -354,7 +397,7 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_gpio.c</PathWithFileName>
+      <PathWithFileName>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_gpio.c</PathWithFileName>
       <FilenameWithoutPath>stm32f1xx_ll_gpio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -367,7 +410,7 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_exti.c</PathWithFileName>
+      <PathWithFileName>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_exti.c</PathWithFileName>
       <FilenameWithoutPath>stm32f1xx_ll_exti.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -380,7 +423,7 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_dma.c</PathWithFileName>
+      <PathWithFileName>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_dma.c</PathWithFileName>
       <FilenameWithoutPath>stm32f1xx_ll_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -393,7 +436,7 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_dac.c</PathWithFileName>
+      <PathWithFileName>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_dac.c</PathWithFileName>
       <FilenameWithoutPath>stm32f1xx_ll_dac.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -406,7 +449,7 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_crc.c</PathWithFileName>
+      <PathWithFileName>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_crc.c</PathWithFileName>
       <FilenameWithoutPath>stm32f1xx_ll_crc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -419,7 +462,7 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_adc.c</PathWithFileName>
+      <PathWithFileName>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_adc.c</PathWithFileName>
       <FilenameWithoutPath>stm32f1xx_ll_adc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -461,7 +504,7 @@
   </Group>
 
   <Group>
-    <GroupName>User/hostapi</GroupName>
+    <GroupName>EXTERNAL/hostapi</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -508,7 +551,7 @@
   </Group>
 
   <Group>
-    <GroupName>User/cookbook</GroupName>
+    <GroupName>EXTERNAL/cookbook</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -581,8 +624,8 @@
   </Group>
 
   <Group>
-    <GroupName>micro</GroupName>
-    <tvExp>0</tvExp>
+    <GroupName>MICRO</GroupName>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -594,8 +637,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\src\micro\cook.h</PathWithFileName>
-      <FilenameWithoutPath>cook.h</FilenameWithoutPath>
+      <PathWithFileName>..\src\micro\facade.h</PathWithFileName>
+      <FilenameWithoutPath>facade.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -607,8 +650,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\src\micro\facade.h</PathWithFileName>
-      <FilenameWithoutPath>facade.h</FilenameWithoutPath>
+      <PathWithFileName>..\src\micro\cook.h</PathWithFileName>
+      <FilenameWithoutPath>cook.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -641,8 +684,8 @@
   </Group>
 
   <Group>
-    <GroupName>micro/intercom</GroupName>
-    <tvExp>0</tvExp>
+    <GroupName>MICRO/intercom</GroupName>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -688,7 +731,7 @@
   </Group>
 
   <Group>
-    <GroupName>micro/cook</GroupName>
+    <GroupName>MICRO/cook</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -709,7 +752,7 @@
   </Group>
 
   <Group>
-    <GroupName>micro/script</GroupName>
+    <GroupName>MICRO/script</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>

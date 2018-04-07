@@ -1,47 +1,46 @@
 #include "main.h"
+
 #include "micro/cook.h"
 #include "micro/intercom.h"
 #include "micro/script.h"
 
 
-extern COOK_RECEIPT  RECEIPT_SimpleDWT;
-extern COOK_RECEIPT  RECEIPT_DataPort_Master;
-extern COOK_RECEIPT  RECEIPT_SimpleRadioPort;
-extern COOK_RECEIPT  RECEIPT_CRC32;
-extern COOK_RECEIPT  RECEIPT_Dummy;
-
+extern COOK_RECEIPT  receipt_ENABLE_DWT;
+extern COOK_RECEIPT  receipt_USE_USART_3;
+extern COOK_RECEIPT  receipt_ENABLE_NRF24L01;
+extern COOK_RECEIPT  receipt_ENABLE_CRC32;
 
 int main(void)
 {
     SystemClock_Config();
     
-    COOK_HW(&RECEIPT_CRC32);
-    COOK_HW(&RECEIPT_SimpleDWT);
+    COOK_HW( &receipt_ENABLE_CRC32 );
+    COOK_HW( &receipt_ENABLE_DWT );
     
     SCRIPT_BindAPI( VM_PAUSE         , &sys_pause            , 150600);
     SCRIPT_BindAPI( VM_RESTART       , &sys_restart          , 1);
     SCRIPT_BindAPI( VM_TERMINATE     , &sys_terminate        , 1);
     
-    INTERCOM_OpenChannel( 0, &RECEIPT_DataPort_Master );
-    //INTERCOM_OpenChannel( 1, &RECEIPT_SimpleRadioPort );
-    //INTERCOM_OpenChannel( 2, &RECEIPT_Dummy );
+    INTERCOM_OpenChannel( 0, &receipt_USE_USART_3 );
+    //INTERCOM_OpenChannel( 1, &receipt_ENABLE_NRF24L01 );
+    //INTERCOM_OpenChannel( 2, &receipt_DUMMY );
     
     loop:while(1)
     {
-        SCRIPT_VM_Tick();
+        SCRIPT_Tick();
     }
 }
 
 void DMA1_Channel4_IRQHandler(void)
 { 
     IO_CHANNEL* temp = INTERCOM_GetChannel(0);
-    temp->Handler_TX( temp ); 
+    temp->Handler_TX(temp);
 }
 
 void DMA1_Channel5_IRQHandler(void)
 { 
     IO_CHANNEL* temp = INTERCOM_GetChannel(0);
-    temp->Handler_RX( temp ); 
+    temp->Handler_RX(temp); 
 }
 
 /* ==============   BOARD SPECIFIC CONFIGURATION CODE BEGIN    ============== */

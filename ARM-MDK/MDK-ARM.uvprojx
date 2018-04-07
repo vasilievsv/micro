@@ -369,7 +369,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>STM32F100xB,HSE_VALUE=8000000U,USE_FULL_LL_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;C:\Developer\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include;C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Inc</IncludePath>
+              <IncludePath>../Inc;C:\Developer\MCU\SDK\STM32\CMSIS\Device\ST\STM32F1xx\Include;C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -435,67 +435,67 @@
             <File>
               <FileName>stm32f1xx_ll_utils.c</FileName>
               <FileType>1</FileType>
-              <FilePath>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_utils.c</FilePath>
+              <FilePath>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_utils.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_ll_usart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_usart.c</FilePath>
+              <FilePath>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_usart.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_ll_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_tim.c</FilePath>
+              <FilePath>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_tim.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_ll_spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_spi.c</FilePath>
+              <FilePath>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_spi.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_ll_rtc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_rtc.c</FilePath>
+              <FilePath>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_rtc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_ll_rcc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_rcc.c</FilePath>
+              <FilePath>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_rcc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_ll_pwr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_pwr.c</FilePath>
+              <FilePath>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_pwr.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_ll_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_gpio.c</FilePath>
+              <FilePath>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_gpio.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_ll_exti.c</FileName>
               <FileType>1</FileType>
-              <FilePath>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_exti.c</FilePath>
+              <FilePath>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_exti.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_ll_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_dma.c</FilePath>
+              <FilePath>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_dma.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_ll_dac.c</FileName>
               <FileType>1</FileType>
-              <FilePath>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_dac.c</FilePath>
+              <FilePath>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_dac.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_ll_crc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_crc.c</FilePath>
+              <FilePath>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_crc.c</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_ll_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>C:\Developer\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_adc.c</FilePath>
+              <FilePath>C:\Developer\MCU\SDK\STM32\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_adc.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -515,7 +515,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>User/hostapi</GroupName>
+          <GroupName>EXTERNAL/hostapi</GroupName>
           <Files>
             <File>
               <FileName>API_Display_WS2812.c</FileName>
@@ -535,7 +535,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>User/cookbook</GroupName>
+          <GroupName>EXTERNAL/cookbook</GroupName>
           <Files>
             <File>
               <FileName>COOK_LL_CRC32.c</FileName>
@@ -565,17 +565,17 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>micro</GroupName>
+          <GroupName>MICRO</GroupName>
           <Files>
-            <File>
-              <FileName>cook.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\micro\cook.h</FilePath>
-            </File>
             <File>
               <FileName>facade.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\src\micro\facade.h</FilePath>
+            </File>
+            <File>
+              <FileName>cook.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\micro\cook.h</FilePath>
             </File>
             <File>
               <FileName>intercom.h</FileName>
@@ -590,7 +590,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>micro/intercom</GroupName>
+          <GroupName>MICRO/intercom</GroupName>
           <Files>
             <File>
               <FileName>intercom.c</FileName>
@@ -610,7 +610,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>micro/cook</GroupName>
+          <GroupName>MICRO/cook</GroupName>
           <Files>
             <File>
               <FileName>cook.c</FileName>
@@ -620,7 +620,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>micro/script</GroupName>
+          <GroupName>MICRO/script</GroupName>
           <Files>
             <File>
               <FileName>API.h</FileName>

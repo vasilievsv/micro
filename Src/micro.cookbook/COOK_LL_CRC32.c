@@ -19,7 +19,8 @@
         __NOP();
     }
     
-    COOK_RECEIPT RECEIPT_CRC32 =
+    
+    COOK_RECEIPT receipt_ENABLE_CRC32 =
     {
          .cook       = &COOK_LL_SimpleCRC32
         
@@ -38,7 +39,7 @@
     uint32_t  revbit(uint32_t  Data)
     {
         __RBIT(Data);
-        //asm("rbit r0,r0");
+        //asm("rbit r0,r0"); //быстрая реализация
         return Data;
     }
     
@@ -47,7 +48,9 @@
         unsigned int i;
         unsigned int Temp;
         
-        // Аппаратный CRC-расчёт работает с 32-битными словами. Т.е. сразу по 4 байта из входной последовательности
+        // Аппаратный CRC-расчёт работает с 32-битными словами. 
+        // Т.е. сразу по 4 байта из входной последовательности
+        //
         i = Len >> 2;
         while(i--)
         {

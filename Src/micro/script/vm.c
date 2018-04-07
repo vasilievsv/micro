@@ -191,7 +191,7 @@ void SCRIPT_BindAPI(uint8_t cmd, API_NativeFunc ptr, uint32_t time)
 }
 
 
-inline void SCRIPT_VM_Tick()
+inline void SCRIPT_Tick()
 {
     if (!VM_CHECK_end_programm())
     {

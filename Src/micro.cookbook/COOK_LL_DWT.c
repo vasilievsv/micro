@@ -20,7 +20,7 @@
         }
     }
     
-    COOK_RECEIPT RECEIPT_SimpleDWT =
+    COOK_RECEIPT receipt_ENABLE_DWT =
     {
          .cook       = &COOK_LL_SimpleDebug
         

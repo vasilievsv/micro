@@ -1,11 +1,11 @@
 #ifndef __SCRIPT_VM
 #define __SCRIPT_VM
-
+    
     #include "facade.h"
     #include "script/API.h"
-
+    
     typedef int(*API_NativeFunc)(char *);
-
+    
     typedef struct 
     {
         API_NativeFunc func;
@@ -26,7 +26,7 @@
     extern unsigned char   vm_stream_1 [32];
     extern unsigned char   vm_stream_2 [32];
 
-    extern inline void SCRIPT_VM_Tick();
+    extern void SCRIPT_Tick();
     extern void SCRIPT_BindAPI  ( uint8_t, API_NativeFunc, uint32_t );
     extern void HOSTX_ProcClear ();
     extern void HOSTX_ProcRun   ( uint8_t* ,uint16_t);

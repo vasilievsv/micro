@@ -22,7 +22,7 @@ void COOK_LL_SimpleUSART(COOK_RECEIPT* xres)
     
     LL_GPIO_SetPinMode  (xres->use_gpio, xres->gpio_pinTX,  LL_GPIO_MODE_ALTERNATE );
     LL_GPIO_SetPinSpeed (xres->use_gpio, xres->gpio_pinTX,  LL_GPIO_SPEED_FREQ_LOW );
-    //LL_GPIO_SetPinPull  (xres->use_gpio, xres->gpio_pinTX,  LL_GPIO_PULL_UP );
+    //LL_GPIO_SetPinPull  (xres->use_gpio, xres->gpio_pinTX,  LL_GPIO_PULL_DOWN);
     
     LL_GPIO_SetPinMode  (xres->use_gpio, xres->gpio_pinRX,  LL_GPIO_MODE_FLOATING );
     LL_GPIO_SetPinSpeed (xres->use_gpio, xres->gpio_pinRX,  LL_GPIO_SPEED_FREQ_LOW );
@@ -32,18 +32,18 @@ void COOK_LL_SimpleUSART(COOK_RECEIPT* xres)
     // MEMORY TO PERIPH
     LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_DMA1);
     
-    LL_DMA_Init (xres->use_dma,xres->dma_chTX, &(LL_DMA_InitTypeDef)
+    LL_DMA_Init (DMA1,LL_DMA_CHANNEL_4, &(LL_DMA_InitTypeDef)
     {
         .Priority                = LL_DMA_PRIORITY_LOW
                      
         ,.Mode                   = LL_DMA_MODE_NORMAL
         ,.Direction              = LL_DMA_DIRECTION_MEMORY_TO_PERIPH
                      
-        ,.MemoryOrM2MDstAddress  = (uint32_t)&xres->dma_m2p_src
+        ,.MemoryOrM2MDstAddress  = xres->dma_m2p_dst
         ,.MemoryOrM2MDstIncMode  = LL_DMA_MEMORY_INCREMENT
         ,.MemoryOrM2MDstDataSize = LL_DMA_MDATAALIGN_BYTE
         
-        ,.PeriphOrM2MSrcAddress  = (uint32_t)&xres->dma_m2p_dst
+        ,.PeriphOrM2MSrcAddress  = xres->dma_m2p_src
         ,.PeriphOrM2MSrcIncMode  = LL_DMA_PERIPH_NOINCREMENT
         ,.PeriphOrM2MSrcDataSize = LL_DMA_PDATAALIGN_BYTE
                      
@@ -66,7 +66,7 @@ void COOK_LL_SimpleUSART(COOK_RECEIPT* xres)
         ,.PeriphOrM2MSrcIncMode  = LL_DMA_PERIPH_NOINCREMENT
         ,.PeriphOrM2MSrcDataSize = LL_DMA_PDATAALIGN_BYTE
 
-        ,.MemoryOrM2MDstAddress  = (uint32_t)&xres->dma_p2m_dst
+        ,.MemoryOrM2MDstAddress  = xres->dma_p2m_dst
         ,.MemoryOrM2MDstIncMode  = LL_DMA_MEMORY_INCREMENT
         ,.MemoryOrM2MDstDataSize = LL_DMA_PDATAALIGN_BYTE
 
@@ -102,13 +102,13 @@ void COOK_LL_SimpleUSART(COOK_RECEIPT* xres)
 }
 
 
-COOK_RECEIPT RECEIPT_DataPort_Master = 
+COOK_RECEIPT receipt_USE_USART_1 = 
 {
      .cook       = &COOK_LL_SimpleUSART
     
     ,.use_usart  = USART1
     ,.use_gpio   = GPIOA
-    ,.use_dma    = DMA1_BASE
+    ,.use_dma    = DMA1
     
     ,.dma_chTX   = LL_DMA_CHANNEL_4
     ,.dma_chRX   = LL_DMA_CHANNEL_5
@@ -117,17 +117,17 @@ COOK_RECEIPT RECEIPT_DataPort_Master =
     ,.gpio_pinRX = LL_GPIO_PIN_10
 };
 
-COOK_RECEIPT RECEIPT_DataPort_RequestAnswer = 
+COOK_RECEIPT receipt_USE_USART_3 = 
 {
     .cook           = &COOK_LL_SimpleUSART
     
     ,.use_usart     = USART3
     ,.use_gpio      = GPIOA
-    ,.use_dma       = DMA1_BASE
+    ,.use_dma       = DMA1
     
     ,.dma_chTX      = LL_DMA_CHANNEL_4
     ,.dma_chRX      = LL_DMA_CHANNEL_5
     
-    ,.gpio_pinTX    = LL_GPIO_PIN_9
-    ,.gpio_pinRX    = LL_GPIO_PIN_10
+    ,.gpio_pinTX    = LL_GPIO_PIN_10
+    ,.gpio_pinRX    = LL_GPIO_PIN_9
 };
