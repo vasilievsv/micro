@@ -32,6 +32,9 @@ int main(void)
     }
 }
 
+//
+// USART1
+//
 void DMA1_Channel4_IRQHandler(void)
 { 
     IO_CHANNEL *temp = INTERCOM_GetChannel(0);
@@ -44,3 +47,26 @@ void DMA1_Channel5_IRQHandler(void)
     
     T->Handler_RX(T);
 }
+
+//
+// WS2812
+//
+void DMA1_Channel1_IRQHandler(void)
+{
+    int a = 0;
+    
+    /*
+    if (DMA_GetITStatus(WS2812B_DMA_IT_HT) != RESET)
+    {
+        DMA_ClearITPendingBit(WS2812B_DMA_IT_HT);
+        DMASendNext(DMABuffer, &DMABuffer[WS2812B_BUFFER_SIZE / 2]);
+    }
+    
+    if (DMA_GetITStatus(WS2812B_DMA_IT_TC) != RESET)
+    {
+        DMA_ClearITPendingBit(WS2812B_DMA_IT_TC);
+        DMASendNext(&DMABuffer[WS2812B_BUFFER_SIZE / 2], &DMABuffer[WS2812B_BUFFER_SIZE]);
+    }
+    */
+}
+    

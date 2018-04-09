@@ -85,7 +85,7 @@
     
     static void DMASend(SrcFilter_t *filter, void *src, unsigned count)
     {
-        /*
+        
         if (!DMABusy)
         {
             DMABusy     = 1;
@@ -107,21 +107,21 @@
                 SrcFilterNull(NULL, &pwm, NULL, end - pwm);
             
             // Start transfer
-            DMA_SetCurrDataCounter(WS2812B_DMA_CHANNEL, sizeof(DMABuffer) / sizeof(uint16_t));
-            TIM_Cmd(WS2812B_TIM, ENABLE);
-            DMA_Cmd(WS2812B_DMA_CHANNEL, ENABLE);
+            
+            LL_TIM_EnableCounter(TIM4);
+            LL_DMA_SetDataLength(DMA1,1,sizeof(DMABuffer) / sizeof(uint16_t));
+            LL_DMA_EnableChannel(DMA1,1);
         }
-        */
+        
     }
     
     static void DMASendNext(PWM_t *pwm, PWM_t *end)
     {
-        /*
         if (!DMAFilter)
         {
             // Stop transfer
-            TIM_Cmd(WS2812B_TIM, DISABLE);
-            DMA_Cmd(WS2812B_DMA_CHANNEL, DISABLE);
+            LL_TIM_DisableCounter(TIM4);
+            LL_DMA_DisableChannel(DMA1,1);
             
             DMABusy = 0;
         }
@@ -141,25 +141,10 @@
             if (pwm < end)
                 SrcFilterNull(NULL, &pwm, NULL, end - pwm);
         }
-        */
+        
     }
     
-    void WS2812B_DMA_HANDLER(void)
-    {
-        /*
-        if (DMA_GetITStatus(WS2812B_DMA_IT_HT) != RESET)
-        {
-            DMA_ClearITPendingBit(WS2812B_DMA_IT_HT);
-            DMASendNext(DMABuffer, &DMABuffer[WS2812B_BUFFER_SIZE / 2]);
-        }
-        
-        if (DMA_GetITStatus(WS2812B_DMA_IT_TC) != RESET)
-        {
-            DMA_ClearITPendingBit(WS2812B_DMA_IT_TC);
-            DMASendNext(&DMABuffer[WS2812B_BUFFER_SIZE / 2], &DMABuffer[WS2812B_BUFFER_SIZE]);
-        }
-        */
-    }
+
     
     ///
     ///
@@ -176,86 +161,73 @@
         LL_GPIO_SetPinMode (GPIOB, LL_GPIO_PIN_6, LL_GPIO_MODE_ALTERNATE);
         LL_GPIO_SetPinSpeed(GPIOB, LL_GPIO_PIN_6, LL_GPIO_SPEED_FREQ_HIGH);
         LL_GPIO_SetPinPull (GPIOB, LL_GPIO_PIN_6, LL_GPIO_PULL_DOWN);
+
 //
 // TIMER - Initialize clock
 //
-        LL_TIM_Init(TIM4, &(LL_TIM_InitTypeDef)
-        {
-             .Prescaler         = (SystemCoreClock / WS2812B_FREQUENCY) - 1
-            ,.CounterMode       = LL_TIM_COUNTERMODE_UP
-            ,.RepetitionCounter = 30 - 1                        //autoreload ???
-            ,.ClockDivision     = LL_TIM_CLOCKDIVISION_DIV1
-        });
-        
-//
-// TIMER - Initialize PWM
-//
-        LL_TIM_OC_Init(TIM4, 1, &(LL_TIM_OC_InitTypeDef) 
-        {
-            .OCMode     = LL_TIM_OCMODE_PWM1
-            ,.OCState   = LL_TIM_OCSTATE_ENABLE
-            ,.OCPolarity= LL_TIM_OCPOLARITY_HIGH
-        });
-        
-        LL_TIM_OC_EnablePreload(TIM4, 1);
-        //LL_TIM_EnableDMAReq_CC1(TIM4);
+    LL_TIM_Init(TIM4, &(LL_TIM_InitTypeDef)
+    {
+         .Prescaler         = (SystemCoreClock / WS2812B_FREQUENCY) - 1
+        ,.CounterMode       = LL_TIM_COUNTERMODE_UP
+        //,.RepetitionCounter = 30 - 1                        //autoreload ???
+        ,.ClockDivision     = LL_TIM_CLOCKDIVISION_DIV1
+    });
+
+    // Initialize PWM
+    LL_TIM_OC_Init(TIM4, 1, &(LL_TIM_OC_InitTypeDef) 
+    {
+        .OCMode     = LL_TIM_OCMODE_PWM1
+        ,.OCState   = LL_TIM_OCSTATE_ENABLE
+        ,.OCPolarity= LL_TIM_OCPOLARITY_HIGH
+    });
+
+    LL_TIM_OC_EnablePreload (TIM4, 1);
+    LL_TIM_OC_SetCompareCH1 (TIM4, 3000);
+    LL_TIM_SetAutoReload    (TIM4, 6000);
+    LL_TIM_EnableDMAReq_CC1 (TIM4);
+    
+    LL_TIM_EnableCounter    (TIM4);
+
 //
 // DMA Initialize channel
 //
-        LL_DMA_Init(DMA1, LL_DMA_CHANNEL_1, &(LL_DMA_InitTypeDef)
-        {
-            .Priority                = LL_DMA_PRIORITY_HIGH
-            
-            ,.Mode                   = LL_DMA_MODE_CIRCULAR
-            ,.Direction              = LL_DMA_DIRECTION_MEMORY_TO_PERIPH
-            
-            ,.PeriphOrM2MSrcAddress  = (uint32_t)&WS2812B_TIM_DMA_CCR
-            ,.PeriphOrM2MSrcIncMode  = LL_DMA_PERIPH_NOINCREMENT
-            ,.PeriphOrM2MSrcDataSize = LL_DMA_PDATAALIGN_HALFWORD
-            
-            ,.MemoryOrM2MDstAddress  = (uint32_t) DMABuffer
-            ,.MemoryOrM2MDstIncMode  = LL_DMA_MEMORY_INCREMENT
-            ,.MemoryOrM2MDstDataSize = LL_DMA_PDATAALIGN_HALFWORD
-            
-            ,.NbData                 = sizeof(DMABuffer) / sizeof(uint16_t)
-        });
+    LL_DMA_Init(DMA1, LL_DMA_CHANNEL_1, &(LL_DMA_InitTypeDef)
+    {
+        .Priority                = LL_DMA_PRIORITY_HIGH
         
-        //NVIC_InitTypeDef NVIC_InitStruct;
-        //NVIC_InitStruct.NVIC_IRQChannel                     = WS2812B_DMA_IRQ;
-        //NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority   = WS2812B_IRQ_PRIO;
-        //NVIC_InitStruct.NVIC_IRQChannelSubPriority          = WS2812B_IRQ_SUBPRIO;
-        //NVIC_InitStruct.NVIC_IRQChannelCmd                  = ENABLE;
-        //NVIC_Init(&NVIC_InitStruct);
-        LL_DMA_EnableChannel(DMA1, 1);
-        LL_DMA_EnableIT_HT  (DMA1, 1);
-        LL_DMA_EnableIT_TC  (DMA1, 1);
-    }
+        ,.Mode                   = LL_DMA_MODE_CIRCULAR
+        ,.Direction              = LL_DMA_DIRECTION_MEMORY_TO_PERIPH
+        
+        ,.PeriphOrM2MSrcAddress  = (uint32_t)&TIM4->CCR1
+        ,.PeriphOrM2MSrcIncMode  = LL_DMA_PERIPH_NOINCREMENT
+        ,.PeriphOrM2MSrcDataSize = LL_DMA_PDATAALIGN_HALFWORD
+        
+        ,.MemoryOrM2MDstAddress  = (uint32_t)DMABuffer
+        ,.MemoryOrM2MDstIncMode  = LL_DMA_MEMORY_INCREMENT
+        ,.MemoryOrM2MDstDataSize = LL_DMA_PDATAALIGN_HALFWORD
+        
+        ,.NbData                 = sizeof(DMABuffer) / sizeof(uint16_t)
+    });
     
-    int ws2812b_IsReady(void)
-    {
-        return !DMABusy;
-    }
+    NVIC_EnableIRQ  (DMA1_Channel1_IRQn);
+    NVIC_SetPriority(DMA1_Channel1_IRQn,0);
     
-    void ws2812b_SendRGB(Color24_t *rgb, unsigned count)
-    {
-        //DMASend(&SrcFilterRGB, rgb, count);
-    }
-    
-    void delayz (int time){}
-    void delay (int time){}
-    void send0 (void){}
-    void send1 (void){}
-    void sendbyte (int byte){}
-    void striprefresh(){}
-    void stripset (int offset, char r, char g, char b){}
-    void stripall (char r, char g, char b){}
-    void striprand(void){}
-    void load_empty_buffer (void){}
-    
-    #define r   led_buf
-    #define g   led_buf
-    #define b   led_buf
-    
+    //LL_DMA_EnableChannel(DMA1, 1);
+    LL_DMA_EnableIT_HT  (DMA1, 1);
+    LL_DMA_EnableIT_TC  (DMA1, 1);
+}
+
+int ws2812b_IsReady(void)
+{
+    return !DMABusy;
+}
+
+void ws2812b_SendRGB(Color24_t *rgb, unsigned count)
+{
+    //DMASend(&SrcFilterRGB, rgb, count);
+}
+
+
 COOK_RECEIPT receipt_ENABLE_WS2812B = 
 {
      .cook       = &COOK_LL_WS2812
