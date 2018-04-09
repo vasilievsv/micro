@@ -24,7 +24,7 @@ void COOK_LL_SetupUSART(COOK_RECEIPT* xres)
     LL_DMA_Init (DMA1,LL_DMA_CHANNEL_4, &(LL_DMA_InitTypeDef)
     {
         .Priority                = LL_DMA_PRIORITY_MEDIUM
-                     
+         
         ,.Mode                   = LL_DMA_MODE_NORMAL
         ,.Direction              = LL_DMA_DIRECTION_MEMORY_TO_PERIPH
                      
@@ -43,7 +43,7 @@ void COOK_LL_SetupUSART(COOK_RECEIPT* xres)
     LL_DMA_EnableIT_HT  ( xres->use_dma, xres->dma_chTX );
     NVIC_EnableIRQ      (DMA1_Channel4_IRQn);
     
-// dma - PERIH TO MEMORY
+// DMA - PERIH TO MEMORY
     LL_DMA_Init ( DMA1, LL_DMA_CHANNEL_5, &(LL_DMA_InitTypeDef)
     {
         .Priority                = LL_DMA_PRIORITY_MEDIUM
@@ -62,22 +62,25 @@ void COOK_LL_SetupUSART(COOK_RECEIPT* xres)
         ,.NbData                 = 32
     });
     
-    LL_DMA_EnableIT_TC( xres->use_dma, xres->dma_chRX );
-    LL_DMA_EnableIT_HT( xres->use_dma, xres->dma_chRX );
+    LL_DMA_EnableIT_TC  ( xres->use_dma, xres->dma_chRX );
+    LL_DMA_EnableIT_HT  ( xres->use_dma, xres->dma_chRX );
     LL_DMA_EnableChannel(xres->use_dma, xres->dma_chRX);
     NVIC_EnableIRQ( DMA1_Channel5_IRQn );
-    
+//
 // GPIO
+//
     LL_GPIO_AF_DisableRemap_USART1();
     
+    //
     LL_GPIO_SetPinSpeed (xres->use_gpio, xres->gpio_pinTX,  LL_GPIO_SPEED_FREQ_LOW );
     LL_GPIO_SetPinPull  (xres->use_gpio, xres->gpio_pinTX,  LL_GPIO_PULL_UP);
     
     LL_GPIO_SetPinMode  (xres->use_gpio, xres->gpio_pinRX,  LL_GPIO_MODE_FLOATING);
     LL_GPIO_SetPinSpeed (xres->use_gpio, xres->gpio_pinRX,  LL_GPIO_MODE_OUTPUT_2MHz );
     LL_GPIO_SetPinPull  (xres->use_gpio, xres->gpio_pinRX,  LL_GPIO_PULL_UP );
-    
+//
 // USART
+//
     LL_USART_Init(USART1, &(LL_USART_InitTypeDef)
     {
         .BaudRate             = 115200
@@ -97,7 +100,7 @@ void COOK_LL_SetupUSART(COOK_RECEIPT* xres)
     
 }
 
-COOK_RECEIPT receipt_USE_USART_1 = 
+COOK_RECEIPT receipt_ENABLE_USART1 = 
 {
      .cook       = &COOK_LL_SetupUSART
     

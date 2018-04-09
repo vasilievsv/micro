@@ -1,5 +1,5 @@
-#ifndef __HOSTX_COOKBOOK
-#define __HOSTX_COOKBOOK
+#ifndef __MICRO_COOKBOOK
+#define __MICRO_COOKBOOK
     
     #include "facade.h"
     
@@ -27,6 +27,5 @@
     }COOK_RECEIPT;
         
     extern void COOK_HW(COOK_RECEIPT* xres);
-    
     
 #endif
