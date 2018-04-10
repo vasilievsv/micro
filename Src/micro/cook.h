@@ -25,7 +25,7 @@
         uint32_t        gpio_pinRX;
         
     }COOK_RECEIPT;
-        
+    
     extern void COOK_HW(COOK_RECEIPT* xres);
     
 #endif

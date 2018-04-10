@@ -6,11 +6,9 @@
   * @date     9 apr 2018 
   * @brief   
   ******************************************************************************
-*/
-    #include "../micro/cook.h"
-    
-    /* ==============   BOARD SPECIFIC CONFIGURATION CODE BEGIN    ============== */
-/**
+  
+  ==============   BOARD SPECIFIC CONFIGURATION CODE BEGIN    ============== 
+  
  * @brief  System Clock Configuration
  *         The system Clock is configured as follow :
  *            System Clock source            = PLL (HSE)
@@ -26,9 +24,9 @@
  * @param  None
  * @retval None
  */
- 
 
- 
+#include "../micro/cook.h"
+
 void SystemClock_Config(void)
 {
     /* Enable HSE oscillator */
@@ -61,21 +59,13 @@ void SystemClock_Config(void)
     /* Update CMSIS variable (which can be updated also through SystemCoreClockUpdate function) */
     SystemCoreClock = 24000000;
 }
- void COOK_LL_SystemClock(COOK_RECEIPT* xres)
- {
-     SystemClock_Config();
- }
+
+void COOK_LL_SystemClock(COOK_RECEIPT* xres)
+{
+ SystemClock_Config();
+}
+
 COOK_RECEIPT receipt_SystemClock =
 {
-     .cook       = &COOK_LL_SystemClock
-    
-    ,.use_usart  = 0
-    ,.use_gpio   = 0
-    ,.use_dma    = 0
-    
-    ,.dma_chTX   = 0
-    ,.dma_chRX   = 0
-    ,.gpio_pinTX = 0
-    ,.gpio_pinRX = 0
+     .cook = &COOK_LL_SystemClock
 };
-    

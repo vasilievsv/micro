@@ -1,5 +1,5 @@
-#ifndef __SCRIPT_VM
-#define __SCRIPT_VM
+#ifndef __MICRO_SCRIPT
+#define __MICRO_SCRIPT
     
     #include "facade.h"
     #include "script/API.h"
@@ -20,18 +20,18 @@
         uint8_t  origin;
         
     }VM_OPCODE;
-
-
+    
+    
     extern unsigned char   vm_stream_0 [32];
     extern unsigned char   vm_stream_1 [32];
     extern unsigned char   vm_stream_2 [32];
-
+    
     extern void SCRIPT_DoTick();
     extern void SCRIPT_BindAPI  ( uint8_t, API_NativeFunc, uint32_t );
     extern void HOSTX_ProcClear ();
     extern void SCRIPT_VM_Run   ( uint8_t* ,uint16_t);
-
- extern VM_API*         vm_tableAPI[];
+    
+    extern VM_API*         vm_tableAPI[];
     
     extern int  SCRIPT_VM_Call  ( uint8_t ,void*);
     extern int  VM_CHECK_end_program();

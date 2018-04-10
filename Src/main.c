@@ -53,20 +53,15 @@ void DMA1_Channel5_IRQHandler(void)
 //
 void DMA1_Channel1_IRQHandler(void)
 {
-    int a = 0;
-    
-    /*
-    if (DMA_GetITStatus(WS2812B_DMA_IT_HT) != RESET)
+    if(LL_DMA_IsActiveFlag_TC1(DMA1) == 1)
     {
-        DMA_ClearITPendingBit(WS2812B_DMA_IT_HT);
-        DMASendNext(DMABuffer, &DMABuffer[WS2812B_BUFFER_SIZE / 2]);
+        LL_DMA_ClearFlag_TC1(DMA1);
+        //DMASendNext(&DMABuffer[32/ 2], &DMABuffer[32]);
     }
     
-    if (DMA_GetITStatus(WS2812B_DMA_IT_TC) != RESET)
+    if(LL_DMA_IsActiveFlag_HT1(DMA1) == 1)
     {
-        DMA_ClearITPendingBit(WS2812B_DMA_IT_TC);
-        DMASendNext(&DMABuffer[WS2812B_BUFFER_SIZE / 2], &DMABuffer[WS2812B_BUFFER_SIZE]);
+        LL_DMA_ClearFlag_HT1(DMA1);
+        //DMASendNext(DMABuffer, &DMABuffer[32 / 2]);
     }
-    */
 }
-    

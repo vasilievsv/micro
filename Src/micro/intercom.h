@@ -1,5 +1,5 @@
-#ifndef __HOSTX_INTERCOM
-#define __HOSTX_INTERCOM
+#ifndef __MICRO_INTERCOM
+#define __MICRO_INTERCOM
     
     
     #include "facade.h"

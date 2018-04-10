@@ -515,13 +515,8 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>my.hostapi</GroupName>
+          <GroupName>my.api</GroupName>
           <Files>
-            <File>
-              <FileName>API_Display_WS2812.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src\micro.hostapi\API_Display_WS2812.c</FilePath>
-            </File>
             <File>
               <FileName>API_Host.c</FileName>
               <FileType>1</FileType>
@@ -531,6 +526,11 @@
               <FileName>API_Mem.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\micro.hostapi\API_Mem.c</FilePath>
+            </File>
+            <File>
+              <FileName>API_WS2812.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\micro.hostapi\API_WS2812.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -597,6 +597,11 @@
               <FileType>5</FileType>
               <FilePath>..\src\micro\script.h</FilePath>
             </File>
+            <File>
+              <FileName>cg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Src\micro\cg.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -646,6 +651,16 @@
               <FileName>script.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\micro\script\script.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>MICRO.cg</GroupName>
+          <Files>
+            <File>
+              <FileName>cg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\micro\cg\cg.c</FilePath>
             </File>
           </Files>
         </Group>

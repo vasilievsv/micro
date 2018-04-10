@@ -14,10 +14,9 @@
 */
 
 #include "../micro/cook.h"
+#include "../micro/cg/bitmap.h"
 
-
-#include "ws2812.h"
-#include "bitmap.h"
+    #include "ws2812.h"
     
     char led_buf [NUMDI];   // One chip - three doides[R,G,B]
     int n;
@@ -161,7 +160,7 @@
         LL_GPIO_SetPinMode (GPIOB, LL_GPIO_PIN_6, LL_GPIO_MODE_ALTERNATE);
         LL_GPIO_SetPinSpeed(GPIOB, LL_GPIO_PIN_6, LL_GPIO_SPEED_FREQ_HIGH);
         LL_GPIO_SetPinPull (GPIOB, LL_GPIO_PIN_6, LL_GPIO_PULL_DOWN);
-
+        
 //
 // TIMER - Initialize clock
 //
@@ -172,22 +171,23 @@
         //,.RepetitionCounter = 30 - 1                        //autoreload ???
         ,.ClockDivision     = LL_TIM_CLOCKDIVISION_DIV1
     });
-
-    // Initialize PWM
+    
+    // TIMER - Init Output Channel
     LL_TIM_OC_Init(TIM4, 1, &(LL_TIM_OC_InitTypeDef) 
     {
         .OCMode     = LL_TIM_OCMODE_PWM1
         ,.OCState   = LL_TIM_OCSTATE_ENABLE
         ,.OCPolarity= LL_TIM_OCPOLARITY_HIGH
     });
-
-    LL_TIM_OC_EnablePreload (TIM4, 1);
-    LL_TIM_OC_SetCompareCH1 (TIM4, 3000);
-    LL_TIM_SetAutoReload    (TIM4, 6000);
-    LL_TIM_EnableDMAReq_CC1 (TIM4);
     
-    LL_TIM_EnableCounter    (TIM4);
-
+    LL_TIM_EnableDMAReq_CC1 (TIM4);
+    LL_TIM_OC_EnablePreload (TIM4, 1);
+    LL_TIM_OC_SetCompareCH1 (TIM4, 3000); // Register.RCC
+    LL_TIM_SetAutoReload    (TIM4, 6000); // Register.ARR
+    
+    
+    LL_TIM_EnableCounter    (TIM4);       // Register SR.EN
+    
 //
 // DMA Initialize channel
 //
@@ -202,7 +202,7 @@
         ,.PeriphOrM2MSrcIncMode  = LL_DMA_PERIPH_NOINCREMENT
         ,.PeriphOrM2MSrcDataSize = LL_DMA_PDATAALIGN_HALFWORD
         
-        ,.MemoryOrM2MDstAddress  = (uint32_t)DMABuffer
+        ,.MemoryOrM2MDstAddress  = (uint32_t)&DMABuffer
         ,.MemoryOrM2MDstIncMode  = LL_DMA_MEMORY_INCREMENT
         ,.MemoryOrM2MDstDataSize = LL_DMA_PDATAALIGN_HALFWORD
         
@@ -212,7 +212,7 @@
     NVIC_EnableIRQ  (DMA1_Channel1_IRQn);
     NVIC_SetPriority(DMA1_Channel1_IRQn,0);
     
-    //LL_DMA_EnableChannel(DMA1, 1);
+    LL_DMA_EnableChannel(DMA1, 1);
     LL_DMA_EnableIT_HT  (DMA1, 1);
     LL_DMA_EnableIT_TC  (DMA1, 1);
 }
@@ -226,7 +226,6 @@ void ws2812b_SendRGB(Color24_t *rgb, unsigned count)
 {
     //DMASend(&SrcFilterRGB, rgb, count);
 }
-
 
 COOK_RECEIPT receipt_ENABLE_WS2812B = 
 {
